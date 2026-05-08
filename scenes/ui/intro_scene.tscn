@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://coq4ll0hnlxdu"]
+
+[ext_resource type="Script" uid="uid://cm7pchgv1qkp7" path="res://scripts/intro_scene.gd" id="1_x734n"]
+[ext_resource type="Texture2D" uid="uid://bmi1oa7yjfjyi" path="res://assets/sprites/pexels-anunturigratuite-14676.jpg" id="2_yrtig"]
+[ext_resource type="Texture2D" uid="uid://rjk2hbmgeosw" path="res://assets/sprites/bunny/sit.png" id="3_hfgfb"]
+[ext_resource type="Texture2D" uid="uid://wbs3disktn5d" path="res://assets/sprites/eyenstyne/eyenstein.webp" id="4_hb0vo"]
+
+[node name="IntroScene" type="Node2D" unique_id=802187901]
+script = ExtResource("1_x734n")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=189351465]
+position = Vector2(960, 540)
+texture = ExtResource("2_yrtig")
+
+[node name="Bunny" type="Sprite2D" parent="." unique_id=1181044548]
+position = Vector2(960, 540)
+texture = ExtResource("3_hfgfb")
+
+[node name="Eyenstyne" type="Sprite2D" parent="." unique_id=714398930]
+position = Vector2(960, 540)
+texture = ExtResource("4_hb0vo")
+
+[node name="TitleCard" type="CanvasLayer" parent="." unique_id=1499253555]
+
+[node name="Title" type="Sprite2D" parent="TitleCard" unique_id=122361875]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=466508733]
+
+[node name="Flash" type="ColorRect" parent="." unique_id=1349180831]
+offset_right = 320.0
+offset_bottom = 180.0
