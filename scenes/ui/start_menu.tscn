@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bddsbep5cngnd"]
+
+[ext_resource type="Script" uid="uid://bnt5373q5aauk" path="res://scripts/start_menu.gd" id="1_irhji"]
+
+[node name="StartMenu" type="Control" unique_id=43695856]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_irhji")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2066196721]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="TextureRect" parent="." unique_id=884637673]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartButton" type="Button" parent="." unique_id=2097578507]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "start
+"

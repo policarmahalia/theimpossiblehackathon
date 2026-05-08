@@ -27,7 +27,7 @@ func _ready():
 	await show_title()          # title fades in
 
 	await get_tree().create_timer(2.0).timeout  # title stays on screen for 2 seconds
-	get_tree().change_scene_to_file("res://scenes/ui/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/start_menu.tscn")
 
 
 # eye moves down to center of screen
