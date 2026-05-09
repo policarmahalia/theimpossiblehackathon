@@ -1,0 +1,255 @@
+[gd_scene format=3 uid="uid://d3mbpouqyru5r"]
+
+[ext_resource type="Texture2D" uid="uid://cjykvlyjcmsk" path="res://assets/backgrounds/bossBackground.png" id="1_ktohs"]
+[ext_resource type="Script" uid="uid://bdtmkuwl811st" path="res://scenes/bossfight/boss_fight.gd" id="1_tbbcy"]
+[ext_resource type="Texture2D" uid="uid://dwtlopc3ck78h" path="res://assets/sprites/bunny/bunStandFront1.png" id="2_tbbcy"]
+[ext_resource type="Texture2D" uid="uid://b52267b06wl51" path="res://assets/sprites/bunny/bunStandFront2.png" id="3_0t4fd"]
+[ext_resource type="Texture2D" uid="uid://c18bfjir53wfm" path="res://assets/sprites/eyenstyne/aiBoss1.png" id="4_2uaep"]
+[ext_resource type="Texture2D" uid="uid://qsemarp42q5h" path="res://assets/sprites/bunny/bunWalk1.png" id="4_j3p6o"]
+[ext_resource type="Texture2D" uid="uid://dnwg8mmy5j7lr" path="res://assets/sprites/bunny/bunWalk2.png" id="5_fy1kf"]
+[ext_resource type="Texture2D" uid="uid://cng36i3grj3hr" path="res://assets/sprites/eyenstyne/aiBoss2.png" id="5_j3p6o"]
+[ext_resource type="Texture2D" uid="uid://diqyjney6fcg6" path="res://assets/sprites/bunny/bunWalk1L.png" id="5_rpcfw"]
+[ext_resource type="Texture2D" uid="uid://c4de52pvmtn55" path="res://assets/sprites/eyenstyne/aiBoss3.png" id="6_fy1kf"]
+[ext_resource type="Texture2D" uid="uid://n6rpaehc6edc" path="res://assets/sprites/bunny/bunWalk3.png" id="6_khvw4"]
+[ext_resource type="Texture2D" uid="uid://bd28becofhej4" path="res://assets/sprites/bunny/bunWalk2L.png" id="6_pbyte"]
+[ext_resource type="Texture2D" uid="uid://dv4ar7h7j0cf5" path="res://assets/sprites/bunny/bunWalk3L.png" id="7_4mtqu"]
+[ext_resource type="Texture2D" uid="uid://iea3xfholur6" path="res://assets/sprites/bunny/bunWalk4.png" id="7_rkr6x"]
+[ext_resource type="Texture2D" uid="uid://bijiunjq21kaf" path="res://assets/sprites/bunny/bunWalk4L.png" id="8_mpoli"]
+[ext_resource type="Texture2D" uid="uid://d4boyreu7jkhi" path="res://assets/sprites/eyenstyne/aiExtraIdle.png" id="12_khvw4"]
+[ext_resource type="Texture2D" uid="uid://vuttupou35lp" path="res://assets/sprites/eyenstyne/aiBeam1.png" id="17_4mtqu"]
+[ext_resource type="Script" uid="uid://c5yli7u4dl16a" path="res://scenes/bossfight/opening_q.gd" id="17_o7nqk"]
+[ext_resource type="Texture2D" uid="uid://da6o0a2hhagy8" path="res://assets/sprites/eyenstyne/aiBeam2.png" id="18_mpoli"]
+[ext_resource type="Texture2D" uid="uid://bmbp3xg2t23yv" path="res://assets/sprites/eyenstyne/wrong1.png" id="19_1pt0v"]
+[ext_resource type="Texture2D" uid="uid://ceolfdcdpl1x5" path="res://assets/sprites/eyenstyne/wrong2.png" id="20_o7nqk"]
+[ext_resource type="Texture2D" uid="uid://c8g2dvyu3leun" path="res://assets/sprites/eyenstyne/wrong3.png" id="21_uf5h8"]
+[ext_resource type="AudioStream" uid="uid://dg71vduuqfoa5" path="res://assets/mariaAudio/bossBackground.mp3" id="23_uf5h8"]
+[ext_resource type="AudioStream" uid="uid://driwqw5bey42r" path="res://assets/mariaAudio/laser.mp3" id="24_mwk0b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_akces"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tbbcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0t4fd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rpcfw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pbyte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4mtqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mpoli")
+}],
+"loop": true,
+"name": &"walkL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_j3p6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fy1kf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_khvw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rkr6x")
+}],
+"loop": true,
+"name": &"walkR",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkcnx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2uaep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j3p6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fy1kf")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2uaep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_khvw4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k5e82"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_4mtqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_mpoli")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=658906635]
+script = ExtResource("1_tbbcy")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1998783656]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_ktohs")
+
+[node name="bunbun" type="AnimatedSprite2D" parent="." unique_id=427043312]
+position = Vector2(574, 763)
+sprite_frames = SubResource("SpriteFrames_akces")
+animation = &"walkL"
+
+[node name="ai" type="AnimatedSprite2D" parent="." unique_id=2052624380]
+position = Vector2(1336, 533)
+sprite_frames = SubResource("SpriteFrames_vkcnx")
+animation = &"idle"
+
+[node name="blue" type="Button" parent="." unique_id=2075069383]
+offset_left = 834.0
+offset_top = 786.0
+offset_right = 1099.0
+offset_bottom = 874.0
+text = "BLUE"
+
+[node name="red" type="Button" parent="." unique_id=369969727]
+offset_left = 61.0
+offset_top = 781.0
+offset_right = 320.0
+offset_bottom = 878.0
+text = "RED"
+
+[node name="openingQ" type="Label" parent="." unique_id=728329782]
+offset_left = 222.0
+offset_top = 222.0
+offset_right = 670.0
+offset_bottom = 271.0
+text = "How would you 
+like being asked 
+stupid questions?
+"
+uppercase = true
+script = ExtResource("17_o7nqk")
+
+[node name="preQuestion" type="Label" parent="." unique_id=1165271063]
+offset_left = 225.0
+offset_top = 220.0
+offset_right = 691.0
+offset_bottom = 268.0
+text = "What is this color?"
+uppercase = true
+
+[node name="q1" type="Label" parent="." unique_id=1568279166]
+offset_left = 229.0
+offset_top = 271.0
+offset_right = 897.0
+offset_bottom = 513.0
+text = "BLUE"
+
+[node name="q2" type="Label" parent="." unique_id=1879864986]
+offset_left = 229.0
+offset_top = 271.0
+offset_right = 915.0
+offset_bottom = 513.0
+text = "ORANGE"
+
+[node name="q3" type="Label" parent="." unique_id=1817934969]
+offset_left = 229.0
+offset_top = 271.0
+offset_right = 977.0
+offset_bottom = 516.0
+text = "BLACK"
+
+[node name="pink" type="Button" parent="." unique_id=1375804832]
+offset_left = 833.0
+offset_top = 787.0
+offset_right = 1098.0
+offset_bottom = 875.0
+text = "PINK
+"
+
+[node name="orange" type="Button" parent="." unique_id=1085821001]
+offset_left = 60.0
+offset_top = 782.0
+offset_right = 319.0
+offset_bottom = 879.0
+text = "ORANGE"
+
+[node name="purple" type="Button" parent="." unique_id=444746905]
+offset_left = 834.0
+offset_top = 786.0
+offset_right = 1099.0
+offset_bottom = 874.0
+text = "PURPLE"
+
+[node name="black" type="Button" parent="." unique_id=2094126096]
+offset_left = 61.0
+offset_top = 781.0
+offset_right = 320.0
+offset_bottom = 878.0
+text = "BLACK"
+
+[node name="beamleft" type="AnimatedSprite2D" parent="." unique_id=1400912781]
+visible = false
+position = Vector2(768, 684.5)
+scale = Vector2(0.6802084, 0.50277776)
+sprite_frames = SubResource("SpriteFrames_k5e82")
+
+[node name="beamright" type="AnimatedSprite2D" parent="." unique_id=228525411]
+visible = false
+position = Vector2(986.00006, 702)
+scale = Vector2(0.33125, 0.5388889)
+sprite_frames = SubResource("SpriteFrames_k5e82")
+
+[node name="wrong1" type="TextureRect" parent="." unique_id=1596837077]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("19_1pt0v")
+
+[node name="wrong2" type="TextureRect" parent="." unique_id=270528005]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("20_o7nqk")
+
+[node name="wrong3" type="TextureRect" parent="." unique_id=591080060]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("21_uf5h8")
+
+[node name="backmusic" type="AudioStreamPlayer2D" parent="." unique_id=906024035]
+stream = ExtResource("23_uf5h8")
+volume_db = -5.814
+
+[node name="laser" type="AudioStreamPlayer2D" parent="." unique_id=2054891108]
+stream = ExtResource("24_mwk0b")
