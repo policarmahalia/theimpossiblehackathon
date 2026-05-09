@@ -1,14 +1,11 @@
 extends Node
 
-var irritation_level : int = 0
-var health           : int = 100
-var current_stage    : int = 1
 
-func reset_for_puzzle():
-	irritation_level = 0
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
 
-func restore_health(amount: int):
-	health = min(health + amount, 100)
 
-func take_damage(amount: int):
-	health = max(health - amount, 0)
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
