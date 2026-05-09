@@ -1,19 +1,198 @@
 [gd_scene format=3 uid="uid://cqye8f4ers8a2"]
 
-[sub_resource type="GDScript" id="GDScript_yoonc"]
-script/source = "extends Node2D
+[ext_resource type="Script" uid="uid://ba2ukvatd4fhc" path="res://scenes/puzzles/puzzle_1.gd" id="1_qto03"]
+[ext_resource type="Texture2D" uid="uid://cgdrs7qrdrga0" path="res://assets/sprites/eyenstyne/ai1Angry1.png" id="2_1w0qm"]
+[ext_resource type="AudioStream" uid="uid://ca8uc72itq58v" path="res://audio/sfx/buzzer.mp3" id="2_mgkv3"]
+[ext_resource type="Texture2D" uid="uid://dp323ke33hgs3" path="res://assets/sprites/eyenstyne/ai3Anger1.png" id="2_mvqcr"]
+[ext_resource type="Texture2D" uid="uid://bjyuhm86a1gl5" path="res://assets/sprites/eyenstyne/aiIdle1.png" id="3_ecaw5"]
+[ext_resource type="Texture2D" uid="uid://p5acr3df0ceo" path="res://assets/sprites/memes/IMG_6112.jpg" id="3_ruqye"]
+[ext_resource type="Texture2D" uid="uid://buobgt3m0n1v0" path="res://assets/sprites/eyenstyne/ai1Angry2.png" id="3_titdl"]
+[ext_resource type="Texture2D" uid="uid://dscq3ceik8erv" path="res://assets/sprites/eyenstyne/ai2Angry1.png" id="4_3elev"]
+[ext_resource type="Texture2D" uid="uid://doqeqjmqd2o3v" path="res://assets/sprites/eyenstyne/aiIdle2.png" id="4_leum7"]
+[ext_resource type="Texture2D" uid="uid://cb23jn5sd8gnp" path="res://assets/sprites/eyenstyne/ai2Angry2.png" id="5_6yl3e"]
+[ext_resource type="Texture2D" uid="uid://crqtga33i0gna" path="res://assets/sprites/eyenstyne/ai3Angry2.png" id="7_hn78t"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yoonc"]
+bg_color = Color(0.8627451, 0.91764706, 0.96862745, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.70466477, 0.7209551, 1)
+anti_aliasing = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y443b"]
+bg_color = Color(0.101960786, 0.101960786, 0.24313726, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.26666668, 0.26666668, 0.6666667, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4v1oy"]
+shadow_offset = Vector2(0, 2)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qto03"]
+bg_color = Color(0.16470589, 0.16470589, 0.36862746, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mvqcr"]
+animations = [{
+"frames": [{
+"duration": 7.0,
+"texture": ExtResource("2_1w0qm")
+}, {
+"duration": 7.0,
+"texture": ExtResource("3_titdl")
+}],
+"loop": true,
+"name": &"angry1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("4_3elev")
+}, {
+"duration": 5.0,
+"texture": ExtResource("5_6yl3e")
+}],
+"loop": true,
+"name": &"angry2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.5,
+"texture": ExtResource("2_mvqcr")
+}, {
+"duration": 3.5,
+"texture": ExtResource("7_hn78t")
+}],
+"loop": true,
+"name": &"angry3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 8.0,
+"texture": ExtResource("3_ecaw5")
+}, {
+"duration": 8.0,
+"texture": ExtResource("4_leum7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Puzzle1" type="Node2D" unique_id=1197595519]
 position = Vector2(1, 0)
-script = SubResource("GDScript_yoonc")
+script = ExtResource("1_qto03")
+
+[node name="PanelShadow" type="ColorRect" parent="." unique_id=1562568715]
+offset_left = 446.0
+offset_top = 209.0
+offset_right = 1523.0
+offset_bottom = 903.0
+rotation = -3.0245197e-05
+size_flags_horizontal = 8
+color = Color(0.36078432, 0.3019608, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="PuzzlePannel" type="Panel" parent="." unique_id=1667781406]
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 1920.0
+offset_bottom = 1074.0
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_yoonc")
+
+[node name="AnswerA" type="Button" parent="." unique_id=1966089935]
+offset_left = 495.0
+offset_top = 518.0
+offset_right = 901.0
+offset_bottom = 663.0
+theme_override_colors/font_color = Color(0.78431374, 0.78431374, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_y443b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4v1oy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qto03")
+text = "A CALENDAR"
+
+[node name="AnswerB" type="Button" parent="." unique_id=2123281196]
+offset_left = 1017.0
+offset_top = 720.0
+offset_right = 1423.0
+offset_bottom = 865.0
+theme_override_colors/font_color = Color(0.78431374, 0.78431374, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_y443b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4v1oy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qto03")
+text = "A WORD
+"
+
+[node name="AnswerC" type="Button" parent="." unique_id=747725025]
+offset_left = 495.0
+offset_top = 720.0
+offset_right = 901.0
+offset_bottom = 865.0
+theme_override_colors/font_color = Color(0.78431374, 0.78431374, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_y443b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4v1oy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qto03")
+text = "THE ANSWER"
+
+[node name="AnswerD" type="Button" parent="." unique_id=1468353108]
+offset_left = 1017.0
+offset_top = 513.0
+offset_right = 1423.0
+offset_bottom = 658.0
+theme_override_colors/font_color = Color(0.78431374, 0.78431374, 1, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_y443b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4v1oy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qto03")
+text = "A RIDDLE
+"
+
+[node name="QuestionLabel" type="RichTextLabel" parent="." unique_id=1452380579]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 288.0
+offset_top = 342.99997
+offset_right = 798.37036
+offset_bottom = 376.3333
+scale = Vector2(2.7, 2.7)
+text = "What has four letters, sometimes nine, always six?
+"
+horizontal_alignment = 1
+
+[node name="Eyenstein" type="AnimatedSprite2D" parent="." unique_id=787088802]
+position = Vector2(1657, 657)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_mvqcr")
+animation = &"angry3"
+
+[node name="Buzzer" type="AudioStreamPlayer" parent="." unique_id=1198457238]
+stream = ExtResource("2_mgkv3")
+
+[node name="FlashTimer" type="Timer" parent="." unique_id=974728844]
+wait_time = 0.7
+one_shot = true
+
+[node name="CountdownTimer" type="Timer" parent="." unique_id=1555939303]
+wait_time = 10.0
+one_shot = true
+
+[node name="MemeFlash" type="TextureRect" parent="." unique_id=1580567103]
+modulate = Color(1, 1, 1, 0)
+offset_left = 385.0
+offset_top = 3.0
+offset_right = 1525.0
+offset_bottom = 1071.0
+texture = ExtResource("3_ruqye")
+expand_mode = 1
+stretch_mode = 5
