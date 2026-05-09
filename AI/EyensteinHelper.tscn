@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b0eyn3rmwojae"]
+
+[ext_resource type="Script" uid="uid://vd52rspvsutl" path="res://scripts/ui/eyenstein_helper.gd" id="1_ut2lm"]
+
+[node name="EyensteinHelper" type="Node2D" unique_id=2100538655]
+script = ExtResource("1_ut2lm")
+
+[node name="EyensteinArea" type="Area2D" parent="." unique_id=614391715]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EyensteinArea" unique_id=1630049795]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EyensteinArea" unique_id=162832562]
+
+[node name="NotifBubble" type="Label" parent="." unique_id=207752963]
+offset_right = 40.0
+offset_bottom = 16.0
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=93709387]
+
+[node name="ChatPanel" type="CanvasLayer" parent="." unique_id=1773103750]
+
+[node name="DimOverlay" type="ColorRect" parent="ChatPanel" unique_id=1144057762]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="ChatPanel" unique_id=1743767433]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChatPanel/PanelContainer" unique_id=747542936]
+layout_mode = 2
+
+[node name="EinsteinBig" type="AnimatedSprite2D" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=1364695601]
+
+[node name="ResponseLabel" type="Label" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=466759373]
+layout_mode = 2
+
+[node name="InputField" type="LineEdit" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=1665802703]
+layout_mode = 2
+
+[node name="SendButton" type="Button" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=937007160]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=639951759]
+layout_mode = 2

@@ -6,4 +6,7 @@
 .export/
 export.cfg
 export_presets.cfg
+api_config.cfg
 
+.godot/
+*.import

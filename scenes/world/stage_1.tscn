@@ -1,18 +1,82 @@
 [gd_scene format=3 uid="uid://cqg0eu623it4e"]
 
+[ext_resource type="Texture2D" uid="uid://dpqcl2inpyla4" path="res://assets/backgrounds/mainBackground.png" id="1_tfliv"]
+[ext_resource type="Texture2D" uid="uid://dwtlopc3ck78h" path="res://assets/sprites/bunny/bunStandFront1.png" id="2_v8ijo"]
+[ext_resource type="Texture2D" uid="uid://b52267b06wl51" path="res://assets/sprites/bunny/bunStandFront2.png" id="3_g4jam"]
+[ext_resource type="Texture2D" uid="uid://qsemarp42q5h" path="res://assets/sprites/bunny/bunWalk1.png" id="4_faaqq"]
+[ext_resource type="Texture2D" uid="uid://dnwg8mmy5j7lr" path="res://assets/sprites/bunny/bunWalk2.png" id="5_yc0xd"]
+[ext_resource type="Texture2D" uid="uid://n6rpaehc6edc" path="res://assets/sprites/bunny/bunWalk3.png" id="6_1te07"]
+[ext_resource type="Texture2D" uid="uid://iea3xfholur6" path="res://assets/sprites/bunny/bunWalk4.png" id="7_pq310"]
+[ext_resource type="Texture2D" uid="uid://bdpx1hjjo3tlt" path="res://assets/sprites/food/carrotLock.png" id="8_faaqq"]
+[ext_resource type="Texture2D" uid="uid://bjyuhm86a1gl5" path="res://assets/sprites/eyenstyne/aiIdle1.png" id="9_yc0xd"]
+[ext_resource type="Texture2D" uid="uid://doqeqjmqd2o3v" path="res://assets/sprites/eyenstyne/aiIdle2.png" id="10_1te07"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibpa5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v8ijo")
+}, {
+"duration": 1.7,
+"texture": ExtResource("3_g4jam")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_faaqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yc0xd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1te07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pq310")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_a83q4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pq310"]
+animations = [{
+"frames": [{
+"duration": 2.4,
+"texture": ExtResource("9_yc0xd")
+}, {
+"duration": 2.4,
+"texture": ExtResource("10_1te07")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Stage1" type="Node2D" unique_id=321141235]
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1698147177]
+[node name="Background" type="Sprite2D" parent="." unique_id=1835756057]
+position = Vector2(960, 540)
+texture = ExtResource("1_tfliv")
 
-[node name="BunBun" type="Sprite2D" parent="." unique_id=350167944]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BunBun" unique_id=569551066]
+[node name="BunBun" type="AnimatedSprite2D" parent="." unique_id=1404878669]
+position = Vector2(1453, 326)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ibpa5")
+animation = &"idle"
+frame_progress = 0.14378439
 
 [node name="FoodItem" type="Area2D" parent="." unique_id=291376857]
 
 [node name="Sprite2D" type="Sprite2D" parent="FoodItem" unique_id=230945201]
+position = Vector2(819, 786)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_faaqq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FoodItem" unique_id=1307153118]
 shape = SubResource("CircleShape2D_a83q4")
@@ -31,9 +95,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
-[node name="EyensteinHelper" type="CanvasLayer" parent="." unique_id=245443588]
-
-[node name="EyensteinSprite" type="Sprite2D" parent="EyensteinHelper" unique_id=368097684]
+[node name="EyensteinHelper" type="AnimatedSprite2D" parent="." unique_id=627029314]
+position = Vector2(1622, 817)
+sprite_frames = SubResource("SpriteFrames_pq310")
+animation = &"idle"
+frame_progress = 0.7577982
 
 [node name="NotifBubble" type="Label" parent="EyensteinHelper" unique_id=1332005511]
 offset_right = 40.0
