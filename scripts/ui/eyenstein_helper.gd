@@ -16,16 +16,17 @@ var COOLDOWN_SECONDS: float = 5.0
 @onready var http_request = $HTTPRequest
 @onready var chat_panel = $ChatPanel
 @onready var eyenstein_big = $ChatPanel/PanelContainer/VBoxContainer/EyensteinBig
-@onready var response_label = $ChatPanel/PanelContainer/VBoxContainer/ResponseLabel
-@onready var input_field = $ChatPanel/PanelContainer/VBoxContainer/InputField
-@onready var send_button = $ChatPanel/PanelContainer/VBoxContainer/SendButton
-@onready var close_button = $ChatPanel/PanelContainer/VBoxContainer/CloseButton
+@onready var response_label = $ChatPanel/ResponseLabel
+@onready var input_field = $ChatPanel/InputField
+@onready var send_button = $ChatPanel/SendButton
+@onready var close_button = $ChatPanel/CloseButton
 @onready var loading_label = $ChatPanel/LoadingLabel
 
 func _ready():
 	API_KEY = _load_api_key()
-	chat_panel.visible = true
+	chat_panel.visible = false
 	loading_label.visible = false
+	eyenstein_sprite.play("float") 
 	eyenstein_area.input_event.connect(_on_eyenstein_clicked)
 	send_button.pressed.connect(_on_send_pressed)
 	close_button.pressed.connect(_on_close_pressed)

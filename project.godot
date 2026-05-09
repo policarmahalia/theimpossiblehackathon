@@ -28,6 +28,10 @@ window/size/viewport_height=1080
 
 theme/custom_font="uid://7fuu2gd4lpkh"
 
+[network]
+
+tls/certificate_bundle_override="ss"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

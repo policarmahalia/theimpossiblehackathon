@@ -37,10 +37,10 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.7,
 "texture": ExtResource("6_oe187")
 }, {
-"duration": 1.0,
+"duration": 2.5,
 "texture": ExtResource("7_yhn1m")
 }],
 "loop": true,
@@ -102,13 +102,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -987.0
+offset_top = -534.0
+offset_right = 1032.0
+offset_bottom = 617.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.9254902)
+color = Color(0, 0, 0, 0.38431373)
 
 [node name="PanelContainer" type="PanelContainer" parent="ChatPanel" unique_id=1743767433]
 custom_minimum_size = Vector2(600, 500)
@@ -121,31 +121,48 @@ offset_bottom = 900.0
 layout_mode = 2
 
 [node name="EyensteinBig" type="AnimatedSprite2D" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=1364695601]
-position = Vector2(713, -19)
+position = Vector2(745, -1)
 scale = Vector2(1.65, 1.556)
 sprite_frames = SubResource("SpriteFrames_oe187")
 
-[node name="ResponseLabel" type="Label" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=466759373]
-layout_mode = 2
+[node name="LoadingLabel" type="Label" parent="ChatPanel" unique_id=560217381]
+offset_left = -549.0
+offset_top = 276.0
+offset_right = -86.0
+offset_bottom = 607.0
+
+[node name="ResponseLabel" type="Label" parent="ChatPanel" unique_id=466759373]
+offset_left = 204.0
+offset_top = 420.0
+offset_right = 1704.0
+offset_bottom = 608.0
+theme_override_font_sizes/font_size = 21
 text = "What can I help You with?"
 horizontal_alignment = 1
 
-[node name="InputField" type="LineEdit" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=1665802703]
+[node name="InputField" type="LineEdit" parent="ChatPanel" unique_id=1665802703]
 custom_minimum_size = Vector2(500, 60)
-layout_mode = 2
+offset_left = 384.0
+offset_top = 649.0
+offset_right = 1496.0
+offset_bottom = 709.0
 size_flags_stretch_ratio = 0.0
 
-[node name="SendButton" type="Button" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=937007160]
+[node name="CloseButton" type="Button" parent="ChatPanel" unique_id=639951759]
 custom_minimum_size = Vector2(200, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="CloseButton" type="Button" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=639951759]
-custom_minimum_size = Vector2(200, 60)
-layout_mode = 2
+offset_left = 712.0
+offset_top = 729.0
+offset_right = 912.0
+offset_bottom = 789.0
 size_flags_horizontal = 0
 size_flags_stretch_ratio = 0.0
+text = "Back"
 
-[node name="LoadingLabel" type="Label" parent="ChatPanel" unique_id=560217381]
-offset_right = 40.0
-offset_bottom = 16.0
+[node name="SendButton" type="Button" parent="ChatPanel" unique_id=937007160]
+custom_minimum_size = Vector2(200, 60)
+offset_left = 979.0
+offset_top = 729.0
+offset_right = 1179.0
+offset_bottom = 789.0
+size_flags_horizontal = 4
+text = "Send"

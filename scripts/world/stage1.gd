@@ -5,8 +5,7 @@ extends Node2D
 @onready var carrot = $Carrot
 @onready var chain = $Carrot/Chain
 @onready var eyenstein_helper = $EyensteinHelper
-@onready var health_bar = $HUD/HealthBar
-@onready var puzzle_overlay = $PuzzleOverlay
+@onready var notification = $Notification
 
 var is_moving: bool = false
 var target_position: Vector2 = Vector2.ZERO
@@ -22,28 +21,33 @@ const ANIM_WALK = "walk"
 func _ready():
 	# health
 	GameManager.health = 25
-	health_bar.value = GameManager.health
-	health_bar.max_value = 100
-
+	
+	notification.visible = false
 	# bunny starts idle
 	bunbun.play(ANIM_IDLE)
 
 	# carrot visible, puzzle hidden
 	carrot.visible = true
 	chain.visible = true
-	puzzle_overlay.visible = false
+
 
 	# eyenstein flies in from off screen bottom left
 	var screen = get_viewport().size
 	eyenstein_helper.position = Vector2(-screen .x + 500, screen.y - 500)   # starts off screen
 	var tween = create_tween()
-	tween.tween_property(eyenstein_helper, "position", Vector2(screen.x - 200, screen.y - 300), 1.5)\
+	tween.tween_property(eyenstein_helper, "position", Vector2(screen.x - 700, screen.y - 100), 1.5)\
 		 .set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
+
+	
 	# connect signals
 	GameManager.answer_given_correct.connect(_on_correct_answer)
 	GameManager.answer_given_wrong.connect(_on_wrong_answer)
 
+	await get_tree().create_timer(2.0).timeout
+	print("timer done")
+	notification.visible = true
+	print("notification visible: ", notification.visible)
 
 func _input(event):
 	if puzzle_open:
@@ -96,20 +100,19 @@ func _open_puzzle():
 	if puzzle_open:
 		return
 	puzzle_open = true
-	puzzle_overlay.visible = true
+	#puzzle_overlay.visible = true
 
 
 func _on_correct_answer():
 	puzzle_open = false
-	puzzle_overlay.visible = false
+	#puzzle_overlay.visible = false
 	chain.visible = false
-	health_bar.value = GameManager.health
 	await get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file("res://scenes/world/stage_2.tscn")
 
 
 func _on_wrong_answer():
-	health_bar.value = GameManager.health
+
 	eyenstein_helper.update_sprite(GameManager.irritation_level)
 
 	if GameManager.irritation_level == 2:
