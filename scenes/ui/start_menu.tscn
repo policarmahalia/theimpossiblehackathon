@@ -25,3 +25,10 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "start
 "
+
+[node name="BunBun" type="Sprite2D" parent="." unique_id=28418942]
+
+[node name="EyensteinSprite" type="Sprite2D" parent="." unique_id=715682295]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=11709944]
+root_node = NodePath("../EyensteinSprite")

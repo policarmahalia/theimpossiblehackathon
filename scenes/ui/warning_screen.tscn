@@ -1,3 +1,24 @@
 [gd_scene format=3 uid="uid://bgk03nxgiby5q"]
 
-[node name="WarningScreen" type="Node2D" unique_id=835359343]
+[node name="WarningScreen" type="CanvasLayer" unique_id=35555179]
+
+[node name="DimOverlay" type="ColorRect" parent="." unique_id=195064834]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1049582707]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1571666543]
+layout_mode = 2
+
+[node name="EyensteinSprite" type="Sprite2D" parent="PanelContainer/VBoxContainer" unique_id=1718233182]
+
+[node name="WarningLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=853696383]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1588603502]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=866324037]
