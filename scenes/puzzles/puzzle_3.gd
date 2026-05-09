@@ -105,11 +105,11 @@ func _flash_meme():
 	meme_flash.visible = true
 	var tween = create_tween()
 	# fade in to half transparency (0.5 alpha) quickly
-	tween.tween_property(meme_flash, "modulate:a", 0.4, 0.1)
+	tween.tween_property(meme_flash, "modulate:a", 0.7, 0.1)
 	# hold for a moment
 	tween.tween_interval(0.4)
 	# fade out slowly
-	tween.tween_property(meme_flash, "modulate:a", 0.0, 0.8)
+	tween.tween_property(meme_flash, "modulate:a", 0.0, 1)
 	# after fully faded go to monologue
 	tween.tween_callback(func():
 		meme_flash.visible = false
