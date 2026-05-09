@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dy24qj2bch52p" path="res://assets/sprites/food/carrot.png" id="9_1te07"]
 [ext_resource type="PackedScene" uid="uid://b0eyn3rmwojae" path="res://AI/EyensteinHelper.tscn" id="11_1te07"]
 [ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="11_pq310"]
-[ext_resource type="Texture2D" uid="uid://bsty3df7tytfq" path="res://assets/sprites/life1.png" id="12_ibpa5"]
+[ext_resource type="Texture2D" uid="uid://d4ha0abm2g76b" path="res://assets/sprites/life1.png" id="12_ibpa5"]
 [ext_resource type="Script" uid="uid://bnsnal0m7pwvg" path="res://scripts/world/stage1.gd" id="12_pq310"]
 [ext_resource type="PackedScene" uid="uid://cqye8f4ers8a2" path="res://scenes/puzzles/puzzle_1.tscn" id="14_ibpa5"]
 

@@ -96,6 +96,7 @@ func _on_correct():
 
 func _on_final_loss():
 	_disable_buttons()
+	GameManager.stop_music()
 	countdown_timer.stop()
 	eyestein.play("angry3")
 	var vine = AudioStreamPlayer.new()
@@ -116,7 +117,7 @@ func _flash_meme():
 	# after fully faded go to monologue
 	tween.tween_callback(func():
 		meme_flash.visible = false
-		print("TODO: go to monologue scene")
+		get_tree().change_scene_to_file("res://scenes/gamescreens/monolog.tscn")
 	)
 
 func _disable_buttons():
