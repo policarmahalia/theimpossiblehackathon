@@ -20,3 +20,19 @@ func reset():
 	health = 25
 	irritation_level = 0
 	current_stage = 1
+
+var music_player: AudioStreamPlayer
+
+func _ready():
+	music_player = AudioStreamPlayer.new()
+	add_child(music_player)
+
+func play_music(path: String):
+	if music_player.stream and music_player.playing:
+		if music_player.stream.resource_path == path:
+			return  # already playing this song, don't restart
+	music_player.stream = load(path)
+	music_player.play()
+
+func stop_music():
+	music_player.stop()

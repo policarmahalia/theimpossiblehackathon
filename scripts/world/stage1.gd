@@ -20,6 +20,7 @@ const ANIM_WALK = "walk"
 
 
 func _ready():
+	GameManager.play_music("res://audio/music/menu_and_stage.mp3")
 	bunbun.play(ANIM_IDLE)
 	notif.visible = false
 	carrot.visible = true

@@ -34,7 +34,7 @@ var questions = [
 		"correct": 0
 	},
 	{
-		"question": "Press the right arrow key on your keyboard",
+		"question": "Press the right arrow",
 		"answers": ["the right arrow", "right arrow", "arrow", "←"],
 		"correct": 3
 	},
@@ -96,10 +96,12 @@ func _on_correct():
 
 func _on_final_loss():
 	_disable_buttons()
+	GameManager.stop_music()
 	countdown_timer.stop()
 	eyestein.play("angry3")
 	var vine = AudioStreamPlayer.new()
 	vine.stream = load("res://audio/sfx/augh.mp3")
+	get_tree().change_scene_to_file("res://scenes/gamescreens/monolog.tscn")
 	add_child(vine)
 	vine.play()
 	_flash_meme()
@@ -116,7 +118,7 @@ func _flash_meme():
 	# after fully faded go to monologue
 	tween.tween_callback(func():
 		meme_flash.visible = false
-		print("TODO: go to monologue scene")
+		get_tree().change_scene_to_file("res://scenes/gamescreens/monolog.tscn")
 	)
 
 func _disable_buttons():

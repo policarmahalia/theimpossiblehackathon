@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cutsxs7sbisvs"]
+[gd_scene format=3 uid="uid://bddsbep5cngnd"]
 
 [ext_resource type="Script" uid="uid://bnt5373q5aauk" path="res://scripts/ui/start_menu.gd" id="1_irhji"]
 [ext_resource type="Texture2D" uid="uid://co8tp7l4ipaet" path="res://assets/sprites/intro/title1.png" id="2_tbbht"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://2iobyc35s5f" path="res://assets/sprites/intro/star2.png" id="10_3gfby"]
 [ext_resource type="Texture2D" uid="uid://bfvya3kpeiurl" path="res://assets/sprites/bunny/bunTitle1.png" id="11_s8lol"]
 [ext_resource type="Texture2D" uid="uid://d28iwlll6hung" path="res://assets/sprites/bunny/bunTitle2.png" id="12_jfidj"]
+[ext_resource type="AudioStream" uid="uid://l1cvje0281pn" path="res://audio/music/menu_and_stage.mp3" id="13_c71uh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sdin7"]
 animations = [{
@@ -128,3 +129,7 @@ autoplay = "default"
 position = Vector2(444, 560)
 scale = Vector2(1.246, 1.26)
 sprite_frames = SubResource("SpriteFrames_5iglk")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1406787392]
+stream = ExtResource("13_c71uh")
+autoplay = true

@@ -96,10 +96,12 @@ func _on_correct():
 
 func _on_final_loss():
 	_disable_buttons()
+	GameManager.stop_music()
 	countdown_timer.stop()
 	eyestein.play("angry3")
 	var vine = AudioStreamPlayer.new()
 	vine.stream = load("res://audio/sfx/vine_boom.mp3")
+	get_tree().change_scene_to_file("res://scenes/gamescreens/monolog.tscn")
 	add_child(vine)
 	vine.play()
 	_flash_meme()
