@@ -1,12 +1,31 @@
 [gd_scene format=3 uid="uid://dtutdwgtvekap"]
 
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://dpqcl2inpyla4" path="res://assets/backgrounds/mainBackground.png" id="1_0m6an"]
 [ext_resource type="Texture2D" uid="uid://c0iwdk368rdti" path="res://assets/sprites/bunny/stand.png" id="2_ni0a4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucr1m"]
+=======
+[ext_resource type="Script" uid="uid://bnsnal0m7pwvg" path="res://scripts/world/stage1.gd" id="1_q1ps1"]
+[ext_resource type="Texture2D" uid="uid://dpqcl2inpyla4" path="res://assets/backgrounds/mainBackground.png" id="2_0f4t3"]
+[ext_resource type="Texture2D" uid="uid://dwtlopc3ck78h" path="res://assets/sprites/bunny/bunStandFront1.png" id="3_n4puk"]
+[ext_resource type="Texture2D" uid="uid://b52267b06wl51" path="res://assets/sprites/bunny/bunStandFront2.png" id="4_iglet"]
+[ext_resource type="Texture2D" uid="uid://qsemarp42q5h" path="res://assets/sprites/bunny/bunWalk1.png" id="5_kofnn"]
+[ext_resource type="Texture2D" uid="uid://dnwg8mmy5j7lr" path="res://assets/sprites/bunny/bunWalk2.png" id="6_jatn0"]
+[ext_resource type="Texture2D" uid="uid://n6rpaehc6edc" path="res://assets/sprites/bunny/bunWalk3.png" id="7_ghl0y"]
+[ext_resource type="Texture2D" uid="uid://iea3xfholur6" path="res://assets/sprites/bunny/bunWalk4.png" id="8_yhgi1"]
+[ext_resource type="Texture2D" uid="uid://dy24qj2bch52p" path="res://assets/sprites/food/carrot.png" id="9_2gdo7"]
+[ext_resource type="Texture2D" uid="uid://bdpx1hjjo3tlt" path="res://assets/sprites/food/carrotLock.png" id="10_0bk63"]
+[ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="11_430uc"]
+[ext_resource type="Texture2D" uid="uid://bsty3df7tytfq" path="res://assets/sprites/life1.png" id="12_c8ds4"]
+[ext_resource type="PackedScene" uid="uid://b0eyn3rmwojae" path="res://AI/EyensteinHelper.tscn" id="13_7cyy7"]
+>>>>>>> b870134cc467125bd94c880a35889a30a2844833
 
-[node name="Stage2" type="Node2D" unique_id=275173726]
+[sub_resource type="LabelSettings" id="LabelSettings_njrbh"]
+font_size = 37
+font_color = Color(0, 0, 0, 1)
 
+<<<<<<< HEAD
 [node name="Background" type="Sprite2D" parent="." unique_id=1940530095]
 position = Vector2(960, 540)
 texture = ExtResource("1_0m6an")
@@ -15,68 +34,172 @@ texture = ExtResource("1_0m6an")
 position = Vector2(1430, 493)
 scale = Vector2(0.464, 0.492)
 texture = ExtResource("2_ni0a4")
+=======
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibpa5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_n4puk")
+}, {
+"duration": 1.7,
+"texture": ExtResource("4_iglet")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_kofnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jatn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ghl0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yhgi1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BunBun" unique_id=428178838]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pq310"]
+size = Vector2(388, 212)
+>>>>>>> b870134cc467125bd94c880a35889a30a2844833
 
-[node name="FoodItem" type="Area2D" parent="." unique_id=1164498071]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_piqdm"]
+bg_color = Color(0.89059, 0.89059, 0.8905901, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="FoodItem" unique_id=1163661584]
+[node name="Stage1" type="Node2D" unique_id=321141235]
+script = ExtResource("1_q1ps1")
 
+[node name="Notification" type="Label" parent="." unique_id=1463577735]
+visible = false
+top_level = true
+z_index = 1
+z_as_relative = false
+custom_minimum_size = Vector2(80, 0)
+offset_left = 946.0
+offset_top = 418.0
+offset_right = 1982.0
+offset_bottom = 495.0
+scale = Vector2(0.7, 0.7)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+size_flags_stretch_ratio = 5.05
+tooltip_text = "Bun Bun
+"
+mouse_filter = 0
+theme_override_constants/line_spacing = 7
+theme_override_font_sizes/font_size = 35
+text = "You're hungry! Get 
+something to eat!"
+label_settings = SubResource("LabelSettings_njrbh")
+horizontal_alignment = 1
+vertical_alignment = 2
+justification_flags = 161
+
+<<<<<<< HEAD
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FoodItem" unique_id=1690976748]
 position = Vector2(146, -64)
 shape = SubResource("CircleShape2D_ucr1m")
+=======
+[node name="Background" type="Sprite2D" parent="." unique_id=1835756057]
+position = Vector2(960, 540)
+texture = ExtResource("2_0f4t3")
+>>>>>>> b870134cc467125bd94c880a35889a30a2844833
 
-[node name="Chain" type="Sprite2D" parent="FoodItem" unique_id=756215960]
+[node name="BunBun" type="AnimatedSprite2D" parent="." unique_id=1404878669]
+position = Vector2(400, 700)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ibpa5")
+animation = &"idle"
+frame_progress = 0.25784948
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=191772804]
+[node name="Carrot" type="Area2D" parent="." unique_id=291376857]
+scale = Vector2(0.5, 0.5)
 
-[node name="HealthBar" type="TextureProgressBar" parent="HUD" unique_id=1584563386]
+[node name="Sprite2D" type="Sprite2D" parent="Carrot" unique_id=230945201]
+position = Vector2(1652, 1652.0001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_2gdo7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carrot" unique_id=1307153118]
+position = Vector2(1634, 1644)
+shape = SubResource("RectangleShape2D_pq310")
+
+[node name="Chain" type="Sprite2D" parent="Carrot" unique_id=872799673]
+position = Vector2(1642, 1658)
+scale = Vector2(0.556, 0.572)
+texture = ExtResource("10_0bk63")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1863164960]
+layer = 0
+
+[node name="IrritationMeter" type="HBoxContainer" parent="HUD" unique_id=2004960559]
 offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
-[node name="IrritationMeter" type="HBoxContainer" parent="HUD" unique_id=543002535]
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
+[node name="HealthPanel" type="PanelContainer" parent="HUD" unique_id=899017330]
+custom_minimum_size = Vector2(700, 200)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_right = 300.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_piqdm")
 
-[node name="EyensteinHelper" type="CanvasLayer" parent="." unique_id=1730918086]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/HealthPanel" unique_id=1095661195]
+layout_mode = 2
 
-[node name="EyensteinSprite" type="Sprite2D" parent="EyensteinHelper" unique_id=1919752678]
+[node name="BunBunPortrait" type="TextureRect" parent="HUD/HealthPanel/HBoxContainer" unique_id=606680384]
+layout_mode = 2
+texture = ExtResource("11_430uc")
+expand_mode = 2
 
-[node name="NotifBubble" type="Label" parent="EyensteinHelper" unique_id=865490980]
-offset_right = 40.0
-offset_bottom = 23.0
-metadata/_edit_use_anchors_ = true
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HealthPanel/HBoxContainer" unique_id=142181024]
+layout_mode = 2
 
-[node name="PuzzleOverlay" type="CanvasLayer" parent="." unique_id=632448682]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HUD/HealthPanel" unique_id=1153490253]
+layout_mode = 2
 
-[node name="Panel" type="Panel" parent="PuzzleOverlay" unique_id=772813313]
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
+[node name="BunBunPortrait" type="TextureRect" parent="HUD/HealthPanel/HBoxContainer2" unique_id=2061067714]
+layout_mode = 2
+texture = ExtResource("11_430uc")
+expand_mode = 2
 
-[node name="QuestionLabel" type="Label" parent="PuzzleOverlay" unique_id=1159645735]
-offset_right = 40.0
-offset_bottom = 23.0
-metadata/_edit_use_anchors_ = true
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HealthPanel/HBoxContainer2" unique_id=561715779]
+layout_mode = 2
 
-[node name="Option1" type="Button" parent="PuzzleOverlay" unique_id=1976614827]
-offset_right = 8.0
-offset_bottom = 8.0
-metadata/_edit_use_anchors_ = true
+[node name="NameLabel" type="Label" parent="HUD" unique_id=877035518]
+z_index = 1
+z_as_relative = false
+custom_minimum_size = Vector2(80, 0)
+offset_left = 220.0
+offset_top = 930.0
+offset_right = 479.0
+offset_bottom = 967.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+size_flags_stretch_ratio = 5.05
+tooltip_text = "Bun Bun
+"
+theme_override_constants/line_spacing = 7
+theme_override_font_sizes/font_size = 43
+text = "Bun Bun"
+label_settings = SubResource("LabelSettings_njrbh")
+vertical_alignment = 2
+justification_flags = 161
 
-[node name="Option2" type="Button" parent="PuzzleOverlay" unique_id=1551829744]
-offset_right = 8.0
-offset_bottom = 8.0
-metadata/_edit_use_anchors_ = true
+[node name="Healthbar" type="Sprite2D" parent="HUD" unique_id=1944924571]
+position = Vector2(409.5, 1018.5)
+scale = Vector2(0.7762097, 0.6826924)
+texture = ExtResource("12_c8ds4")
 
-[node name="Option3" type="Button" parent="PuzzleOverlay" unique_id=1238482112]
-offset_right = 8.0
-offset_bottom = 8.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Option4" type="Button" parent="PuzzleOverlay" unique_id=1247210575]
-offset_right = 8.0
-offset_bottom = 8.0
-metadata/_edit_use_anchors_ = true
+[node name="EyensteinHelper" parent="." unique_id=2100538655 instance=ExtResource("13_7cyy7")]
+position = Vector2(473, -169)
