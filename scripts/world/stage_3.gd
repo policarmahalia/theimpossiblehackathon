@@ -26,7 +26,6 @@ func _ready():
 	puzzle_overlay.puzzle_completed.connect(_on_puzzle_completed)
 
 	var screen = get_viewport().size
-	eyenstein_helper.position = Vector2(-screen.x + 500, screen.y - 500)
 	var tween = create_tween()
 	tween.tween_property(eyenstein_helper, "position", Vector2(screen.x - 700, screen.y - 100), 1.5)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -40,7 +39,7 @@ func _input(event):
 		var clicked_pos = get_global_mouse_position()
 
 		if celery_unlocked and clicked_pos.distance_to(celery_sprite.global_position) < 80:
-			get_tree().change_scene_to_file("res://scenes/bossfight/boss_fight.tscn")
+			get_tree().change_scene_to_file("res://scenes/gamescreens/monolog.tscn")
 			return
 
 		if not celery_unlocked and clicked_pos.distance_to(celery_sprite.global_position) < 80:

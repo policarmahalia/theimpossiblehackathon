@@ -26,7 +26,6 @@ func _ready():
 	puzzle_overlay.puzzle_completed.connect(_on_puzzle_completed)
 
 	var screen = get_viewport().size
-	eyenstein_helper.position = Vector2(-screen.x + 500, screen.y - 500)
 	var tween = create_tween()
 	tween.tween_property(eyenstein_helper, "position", Vector2(screen.x - 700, screen.y - 100), 1.5)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

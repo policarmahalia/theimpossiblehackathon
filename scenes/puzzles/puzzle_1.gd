@@ -113,7 +113,7 @@ func _flash_meme():
 	tween.tween_property(meme_flash, "modulate:a", 0.0, 0.8)
 	tween.tween_callback(func():
 		meme_flash.visible = false
-		get_tree().change_scene_to_file("res://scenes/bossfight/boss_fight.tscn")
+		get_tree().change_scene_to_file("res://scenes/gamescreens/monolog.tscn")
 	)
 
 

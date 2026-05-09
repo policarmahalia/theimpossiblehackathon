@@ -102,7 +102,6 @@ func _on_final_loss():
 	vine.stream = load("res://audio/sfx/augh.mp3")
 	add_child(vine)
 	vine.play()
-	$AudioStreamPlayer.play(1.4)
 	_flash_meme()
 
 func _flash_meme():
