@@ -1,31 +1,66 @@
 [gd_scene format=3 uid="uid://coq4ll0hnlxdu"]
 
 [ext_resource type="Script" uid="uid://cm7pchgv1qkp7" path="res://scripts/ui/intro_scene.gd" id="1_x734n"]
-[ext_resource type="Texture2D" uid="uid://bmi1oa7yjfjyi" path="res://assets/backgrounds/pexels-anunturigratuite-14676.jpg" id="2_yrtig"]
+[ext_resource type="Texture2D" uid="uid://dpqcl2inpyla4" path="res://assets/backgrounds/mainBackground.png" id="2_v2njy"]
 [ext_resource type="Texture2D" uid="uid://rjk2hbmgeosw" path="res://assets/sprites/bunny/sit.png" id="3_hfgfb"]
-[ext_resource type="Texture2D" uid="uid://wbs3disktn5d" path="res://assets/sprites/eyenstyne/eyenstein.webp" id="4_hb0vo"]
+[ext_resource type="Texture2D" uid="uid://i2myq33myd73" path="res://assets/sprites/eyenstyne/aiIntro1.png" id="4_hfilb"]
+[ext_resource type="Texture2D" uid="uid://cd8qo8bi8lvq8" path="res://assets/sprites/eyenstyne/aiIntro2.png" id="5_n1514"]
+[ext_resource type="Texture2D" uid="uid://bf8fq0m6wcrgl" path="res://assets/sprites/eyenstyne/aiIntro3.png" id="6_jgr5c"]
+[ext_resource type="Texture2D" uid="uid://dsjag8v780wel" path="res://assets/sprites/eyenstyne/aiIntro4.png" id="7_xvq2p"]
+[ext_resource type="AudioStream" uid="uid://ceuw5yt44f6r7" path="res://assets/mariaAudio/sit2standBun.mp3" id="8_hfilb"]
+[ext_resource type="AudioStream" uid="uid://bcha01mhppwa2" path="res://assets/mariaAudio/aiDesends.mp3" id="9_n1514"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kx5ml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hfilb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n1514")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jgr5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xvq2p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="IntroScene" type="Node2D" unique_id=802187901]
 script = ExtResource("1_x734n")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=189351465]
-position = Vector2(960, 540)
-texture = ExtResource("2_yrtig")
+[node name="Background" type="TextureRect" parent="." unique_id=1466671682]
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 1918.0
+offset_bottom = 1081.0
+texture = ExtResource("2_v2njy")
 
 [node name="Bunny" type="Sprite2D" parent="." unique_id=1181044548]
-position = Vector2(960, 540)
+position = Vector2(575, 650)
 texture = ExtResource("3_hfgfb")
 
-[node name="Eyenstyne" type="Sprite2D" parent="." unique_id=714398930]
-position = Vector2(960, 540)
-texture = ExtResource("4_hb0vo")
+[node name="Eyenstyne" type="AnimatedSprite2D" parent="." unique_id=8437953]
+position = Vector2(1451, 302)
+scale = Vector2(1.228, 1.216)
+sprite_frames = SubResource("SpriteFrames_kx5ml")
 
 [node name="TitleCard" type="CanvasLayer" parent="." unique_id=1499253555]
 
-[node name="Title" type="Sprite2D" parent="TitleCard" unique_id=122361875]
+[node name="Title" type="TextureRect" parent="TitleCard" unique_id=776701072]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=466508733]
 
 [node name="Flash" type="ColorRect" parent="." unique_id=1349180831]
 offset_right = 320.0
 offset_bottom = 180.0
+
+[node name="sit2stand" type="AudioStreamPlayer2D" parent="." unique_id=1259464822]
+stream = ExtResource("8_hfilb")
+
+[node name="aiDesends" type="AudioStreamPlayer2D" parent="." unique_id=742791908]
+stream = ExtResource("9_n1514")

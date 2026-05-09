@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dlsdnbs410aii"]
+
+[ext_resource type="Script" uid="uid://cgq4bfcuxm6yg" path="res://scenes/gamescreens/monolog.gd" id="1_s1pcg"]
+[ext_resource type="Texture2D" uid="uid://dctt2u02f2xr4" path="res://assets/backgrounds/05shotOfEyeBackground.png" id="2_q1c6s"]
+[ext_resource type="Texture2D" uid="uid://deumgge6aahuv" path="res://assets/sprites/eyenstyne/05shotOfEyeGuy.png" id="3_ppd4q"]
+[ext_resource type="Texture2D" uid="uid://k6rxn76moqru" path="res://assets/backgrounds/cutSceenBackgrounf.png" id="4_6p01f"]
+[ext_resource type="Texture2D" uid="uid://bdho3yycm8o3t" path="res://assets/sprites/eyenstyne/aiAngry1.png" id="5_jlymr"]
+[ext_resource type="Texture2D" uid="uid://c4g73d8amycl7" path="res://assets/sprites/eyenstyne/aiAngry2.png" id="6_b430b"]
+[ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="7_30h8t"]
+
+[node name="Monolog" type="Node2D" unique_id=1535712977]
+script = ExtResource("1_s1pcg")
+
+[node name="paintbackground" type="TextureRect" parent="." unique_id=950022091]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_q1c6s")
+
+[node name="05ai" type="TextureRect" parent="." unique_id=1686477420]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_ppd4q")
+
+[node name="prebackground" type="TextureRect" parent="." unique_id=81919054]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_6p01f")
+
+[node name="comeai1" type="Sprite2D" parent="." unique_id=1247532319]
+position = Vector2(949, 498)
+scale = Vector2(1.162, 1.162)
+texture = ExtResource("5_jlymr")
+
+[node name="comeai2" type="Sprite2D" parent="." unique_id=103157009]
+position = Vector2(941, 525)
+scale = Vector2(1.393, 1.489)
+texture = ExtResource("6_b430b")
+
+[node name="bunbun" type="Sprite2D" parent="." unique_id=1389003190]
+position = Vector2(976.99994, 1000)
+scale = Vector2(1.999, 1.7259998)
+texture = ExtResource("7_30h8t")
+
+[node name="Flash" type="ColorRect" parent="." unique_id=1043233858]
+visible = false
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="Dark" type="TextureRect" parent="." unique_id=1477297744]
+offset_right = 320.0
+offset_bottom = 180.0
