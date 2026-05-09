@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://coq4ll0hnlxdu"]
 
-[ext_resource type="Script" uid="uid://cm7pchgv1qkp7" path="res://scripts/intro_scene.gd" id="1_x734n"]
-[ext_resource type="Texture2D" uid="uid://bmi1oa7yjfjyi" path="res://assets/sprites/pexels-anunturigratuite-14676.jpg" id="2_yrtig"]
+[ext_resource type="Script" uid="uid://cm7pchgv1qkp7" path="res://scripts/ui/intro_scene.gd" id="1_x734n"]
+[ext_resource type="Texture2D" uid="uid://bmi1oa7yjfjyi" path="res://assets/backgrounds/pexels-anunturigratuite-14676.jpg" id="2_yrtig"]
 [ext_resource type="Texture2D" uid="uid://rjk2hbmgeosw" path="res://assets/sprites/bunny/sit.png" id="3_hfgfb"]
 [ext_resource type="Texture2D" uid="uid://wbs3disktn5d" path="res://assets/sprites/eyenstyne/eyenstein.webp" id="4_hb0vo"]
 

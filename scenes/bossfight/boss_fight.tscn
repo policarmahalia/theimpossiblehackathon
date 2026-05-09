@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://d2lu84q04iem"]
+
+[node name="BossFight" type="Node2D" unique_id=1881715165]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=911246445]
+
+[node name="BunBun" type="Sprite2D" parent="." unique_id=723211244]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BunBun" unique_id=1691424335]
+
+[node name="Eyenstein" type="Sprite2D" parent="." unique_id=1941111513]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Eyenstein" unique_id=1465754427]
+
+[node name="QuestionPanel" type="PanelContainer" parent="." unique_id=1934554020]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestionPanel" unique_id=576383252]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="QuestionPanel/VBoxContainer" unique_id=1036675229]
+layout_mode = 2
+
+[node name="QuestionLabel" type="Label" parent="QuestionPanel" unique_id=2132770128]
+layout_mode = 2

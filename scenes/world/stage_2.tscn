@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dtutdwgtvekap"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ucr1m"]
+
+[node name="Stage2" type="Node2D" unique_id=275173726]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1940530095]
+
+[node name="BunBun" type="Sprite2D" parent="." unique_id=2129908885]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BunBun" unique_id=428178838]
+
+[node name="FoodItem" type="Area2D" parent="." unique_id=1164498071]
+
+[node name="Sprite2D" type="Sprite2D" parent="FoodItem" unique_id=1163661584]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodItem" unique_id=1690976748]
+shape = SubResource("CircleShape2D_ucr1m")
+
+[node name="Chain" type="Sprite2D" parent="FoodItem" unique_id=756215960]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=191772804]
+
+[node name="HealthBar" type="TextureProgressBar" parent="HUD" unique_id=1584563386]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="IrritationMeter" type="HBoxContainer" parent="HUD" unique_id=543002535]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="EyensteinHelper" type="CanvasLayer" parent="." unique_id=1730918086]
+
+[node name="EyensteinSprite" type="Sprite2D" parent="EyensteinHelper" unique_id=1919752678]
+
+[node name="NotifBubble" type="Label" parent="EyensteinHelper" unique_id=865490980]
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PuzzleOverlay" type="CanvasLayer" parent="." unique_id=632448682]
+
+[node name="Panel" type="Panel" parent="PuzzleOverlay" unique_id=772813313]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="QuestionLabel" type="Label" parent="PuzzleOverlay" unique_id=1159645735]
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Option1" type="Button" parent="PuzzleOverlay" unique_id=1976614827]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Option2" type="Button" parent="PuzzleOverlay" unique_id=1551829744]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Option3" type="Button" parent="PuzzleOverlay" unique_id=1238482112]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Option4" type="Button" parent="PuzzleOverlay" unique_id=1247210575]
+offset_right = 8.0
+offset_bottom = 8.0
+metadata/_edit_use_anchors_ = true
