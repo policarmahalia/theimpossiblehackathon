@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://chypscpjd3gls"]
 
+[ext_resource type="Script" uid="uid://cclmph2o4y4h4" path="res://scripts/world/stage_3.gd" id="1_7imqb"]
 [ext_resource type="Texture2D" uid="uid://dpqcl2inpyla4" path="res://assets/backgrounds/mainBackground.png" id="1_bb3ho"]
 [ext_resource type="Texture2D" uid="uid://dwtlopc3ck78h" path="res://assets/sprites/bunny/bunStandFront1.png" id="2_ru2cd"]
 [ext_resource type="Texture2D" uid="uid://b52267b06wl51" path="res://assets/sprites/bunny/bunStandFront2.png" id="3_7imqb"]
@@ -12,10 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="10_ii4l7"]
 [ext_resource type="Texture2D" uid="uid://bsty3df7tytfq" path="res://assets/sprites/life1.png" id="11_i8k6v"]
 [ext_resource type="PackedScene" uid="uid://b0eyn3rmwojae" path="res://AI/EyensteinHelper.tscn" id="12_vlyu0"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_f70rw"]
-font_size = 37
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="PackedScene" uid="uid://drf540uu0efjd" path="res://scenes/puzzles/puzzle_3.tscn" id="14_dbb86"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3qkhm"]
 animations = [{
@@ -54,33 +52,12 @@ size = Vector2(388, 212)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5siw8"]
 bg_color = Color(0.89059, 0.89059, 0.8905901, 1)
 
-[node name="Stage3" type="Node2D" unique_id=862377058]
+[sub_resource type="LabelSettings" id="LabelSettings_f70rw"]
+font_size = 37
+font_color = Color(0, 0, 0, 1)
 
-[node name="Notification" type="Label" parent="." unique_id=375675420]
-visible = false
-top_level = true
-z_index = 1
-z_as_relative = false
-custom_minimum_size = Vector2(80, 0)
-offset_left = 946.0
-offset_top = 418.0
-offset_right = 1982.0
-offset_bottom = 495.0
-scale = Vector2(0.7, 0.7)
-size_flags_horizontal = 4
-size_flags_vertical = 0
-size_flags_stretch_ratio = 5.05
-tooltip_text = "Bun Bun
-"
-mouse_filter = 0
-theme_override_constants/line_spacing = 7
-theme_override_font_sizes/font_size = 35
-text = "You're hungry! Get 
-something to eat!"
-label_settings = SubResource("LabelSettings_f70rw")
-horizontal_alignment = 1
-vertical_alignment = 2
-justification_flags = 161
+[node name="Stage3" type="Node2D" unique_id=862377058]
+script = ExtResource("1_7imqb")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=35504042]
 position = Vector2(960, 540)
@@ -176,3 +153,5 @@ texture = ExtResource("11_i8k6v")
 
 [node name="EyensteinHelper" parent="." unique_id=2100538655 instance=ExtResource("12_vlyu0")]
 position = Vector2(473, -169)
+
+[node name="PuzzleOverlay" parent="." unique_id=416649857 instance=ExtResource("14_dbb86")]
