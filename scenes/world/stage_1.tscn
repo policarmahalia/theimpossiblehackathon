@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="11_pq310"]
 [ext_resource type="Texture2D" uid="uid://bsty3df7tytfq" path="res://assets/sprites/life1.png" id="12_ibpa5"]
 [ext_resource type="Script" uid="uid://bnsnal0m7pwvg" path="res://scripts/world/stage1.gd" id="12_pq310"]
+[ext_resource type="PackedScene" uid="uid://cqye8f4ers8a2" path="res://scenes/puzzles/puzzle_1.tscn" id="14_ibpa5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_njrbh"]
 font_size = 37
@@ -58,7 +59,7 @@ bg_color = Color(0.89059, 0.89059, 0.8905901, 1)
 [node name="Stage1" type="Node2D" unique_id=321141235]
 script = ExtResource("12_pq310")
 
-[node name="Notification" type="Label" parent="." unique_id=1463577735]
+[node name="notif" type="Label" parent="." unique_id=1463577735]
 visible = false
 top_level = true
 z_index = 1
@@ -179,3 +180,6 @@ texture = ExtResource("12_ibpa5")
 
 [node name="EyensteinHelper" parent="." unique_id=2100538655 instance=ExtResource("11_1te07")]
 position = Vector2(473, -169)
+
+[node name="PuzzleOverlay" parent="." unique_id=1197595519 instance=ExtResource("14_ibpa5")]
+visible = false

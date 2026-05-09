@@ -1,11 +1,5 @@
 [gd_scene format=3 uid="uid://dtutdwgtvekap"]
 
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://dpqcl2inpyla4" path="res://assets/backgrounds/mainBackground.png" id="1_0m6an"]
-[ext_resource type="Texture2D" uid="uid://c0iwdk368rdti" path="res://assets/sprites/bunny/stand.png" id="2_ni0a4"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ucr1m"]
-=======
 [ext_resource type="Script" uid="uid://bnsnal0m7pwvg" path="res://scripts/world/stage1.gd" id="1_q1ps1"]
 [ext_resource type="Texture2D" uid="uid://dpqcl2inpyla4" path="res://assets/backgrounds/mainBackground.png" id="2_0f4t3"]
 [ext_resource type="Texture2D" uid="uid://dwtlopc3ck78h" path="res://assets/sprites/bunny/bunStandFront1.png" id="3_n4puk"]
@@ -17,24 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://dy24qj2bch52p" path="res://assets/sprites/food/carrot.png" id="9_2gdo7"]
 [ext_resource type="Texture2D" uid="uid://bdpx1hjjo3tlt" path="res://assets/sprites/food/carrotLock.png" id="10_0bk63"]
 [ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="11_430uc"]
-[ext_resource type="Texture2D" uid="uid://bxlxticcv5xnm" path="res://assets/sprites/life3.png" id="12_q1ps1"]
+[ext_resource type="Texture2D" uid="uid://bsty3df7tytfq" path="res://assets/sprites/life1.png" id="12_c8ds4"]
 [ext_resource type="PackedScene" uid="uid://b0eyn3rmwojae" path="res://AI/EyensteinHelper.tscn" id="13_7cyy7"]
->>>>>>> b870134cc467125bd94c880a35889a30a2844833
 
 [sub_resource type="LabelSettings" id="LabelSettings_njrbh"]
 font_size = 37
 font_color = Color(0, 0, 0, 1)
 
-<<<<<<< HEAD
-[node name="Background" type="Sprite2D" parent="." unique_id=1940530095]
-position = Vector2(960, 540)
-texture = ExtResource("1_0m6an")
-
-[node name="BunBun" type="Sprite2D" parent="." unique_id=2129908885]
-position = Vector2(1430, 493)
-scale = Vector2(0.464, 0.492)
-texture = ExtResource("2_ni0a4")
-=======
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibpa5"]
 animations = [{
 "frames": [{
@@ -68,12 +51,11 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pq310"]
 size = Vector2(388, 212)
->>>>>>> b870134cc467125bd94c880a35889a30a2844833
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_piqdm"]
 bg_color = Color(0.89059, 0.89059, 0.8905901, 1)
 
-[node name="Stage1" type="Node2D" unique_id=321141235]
+[node name="Stage2" type="Node2D" unique_id=321141235]
 script = ExtResource("1_q1ps1")
 
 [node name="Notification" type="Label" parent="." unique_id=1463577735]
@@ -102,15 +84,9 @@ horizontal_alignment = 1
 vertical_alignment = 2
 justification_flags = 161
 
-<<<<<<< HEAD
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodItem" unique_id=1690976748]
-position = Vector2(146, -64)
-shape = SubResource("CircleShape2D_ucr1m")
-=======
 [node name="Background" type="Sprite2D" parent="." unique_id=1835756057]
 position = Vector2(960, 540)
 texture = ExtResource("2_0f4t3")
->>>>>>> b870134cc467125bd94c880a35889a30a2844833
 
 [node name="BunBun" type="AnimatedSprite2D" parent="." unique_id=1404878669]
 position = Vector2(400, 700)
@@ -199,7 +175,7 @@ justification_flags = 161
 [node name="Healthbar" type="Sprite2D" parent="HUD" unique_id=1944924571]
 position = Vector2(409.5, 1018.5)
 scale = Vector2(0.7762097, 0.6826924)
-texture = ExtResource("12_q1ps1")
+texture = ExtResource("12_c8ds4")
 
 [node name="EyensteinHelper" parent="." unique_id=2100538655 instance=ExtResource("13_7cyy7")]
 position = Vector2(473, -169)
