@@ -1,12 +1,6 @@
 [gd_scene format=3 uid="uid://dtutdwgtvekap"]
 
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://dpqcl2inpyla4" path="res://assets/backgrounds/mainBackground.png" id="1_0m6an"]
-[ext_resource type="Texture2D" uid="uid://c0iwdk368rdti" path="res://assets/sprites/bunny/stand.png" id="2_ni0a4"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ucr1m"]
-=======
-[ext_resource type="Script" uid="uid://bnsnal0m7pwvg" path="res://scripts/world/stage1.gd" id="1_q1ps1"]
+[ext_resource type="Script" uid="uid://bjeagslsrkwp4" path="res://scripts/world/stage_2.gd" id="1_0f4t3"]
 [ext_resource type="Texture2D" uid="uid://dpqcl2inpyla4" path="res://assets/backgrounds/mainBackground.png" id="2_0f4t3"]
 [ext_resource type="Texture2D" uid="uid://dwtlopc3ck78h" path="res://assets/sprites/bunny/bunStandFront1.png" id="3_n4puk"]
 [ext_resource type="Texture2D" uid="uid://b52267b06wl51" path="res://assets/sprites/bunny/bunStandFront2.png" id="4_iglet"]
@@ -14,27 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://dnwg8mmy5j7lr" path="res://assets/sprites/bunny/bunWalk2.png" id="6_jatn0"]
 [ext_resource type="Texture2D" uid="uid://n6rpaehc6edc" path="res://assets/sprites/bunny/bunWalk3.png" id="7_ghl0y"]
 [ext_resource type="Texture2D" uid="uid://iea3xfholur6" path="res://assets/sprites/bunny/bunWalk4.png" id="8_yhgi1"]
-[ext_resource type="Texture2D" uid="uid://dy24qj2bch52p" path="res://assets/sprites/food/carrot.png" id="9_2gdo7"]
-[ext_resource type="Texture2D" uid="uid://bdpx1hjjo3tlt" path="res://assets/sprites/food/carrotLock.png" id="10_0bk63"]
+[ext_resource type="Texture2D" uid="uid://dhckc6gwdlt4e" path="res://assets/sprites/food/berry.png" id="9_q1ps1"]
+[ext_resource type="Texture2D" uid="uid://dia0371clj741" path="res://assets/sprites/food/berryLock.png" id="10_0f4t3"]
 [ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="11_430uc"]
+[ext_resource type="PackedScene" uid="uid://fsvm6ht302ji" path="res://scenes/puzzles/puzzle_2.tscn" id="11_n4puk"]
 [ext_resource type="Texture2D" uid="uid://bsty3df7tytfq" path="res://assets/sprites/life1.png" id="12_c8ds4"]
 [ext_resource type="PackedScene" uid="uid://b0eyn3rmwojae" path="res://AI/EyensteinHelper.tscn" id="13_7cyy7"]
->>>>>>> b870134cc467125bd94c880a35889a30a2844833
 
-[sub_resource type="LabelSettings" id="LabelSettings_njrbh"]
-font_size = 37
-font_color = Color(0, 0, 0, 1)
-
-<<<<<<< HEAD
-[node name="Background" type="Sprite2D" parent="." unique_id=1940530095]
-position = Vector2(960, 540)
-texture = ExtResource("1_0m6an")
-
-[node name="BunBun" type="Sprite2D" parent="." unique_id=2129908885]
-position = Vector2(1430, 493)
-scale = Vector2(0.464, 0.492)
-texture = ExtResource("2_ni0a4")
-=======
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibpa5"]
 animations = [{
 "frames": [{
@@ -68,49 +48,20 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pq310"]
 size = Vector2(388, 212)
->>>>>>> b870134cc467125bd94c880a35889a30a2844833
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_piqdm"]
 bg_color = Color(0.89059, 0.89059, 0.8905901, 1)
 
-[node name="Stage1" type="Node2D" unique_id=321141235]
-script = ExtResource("1_q1ps1")
+[sub_resource type="LabelSettings" id="LabelSettings_njrbh"]
+font_size = 37
+font_color = Color(0, 0, 0, 1)
 
-[node name="Notification" type="Label" parent="." unique_id=1463577735]
-visible = false
-top_level = true
-z_index = 1
-z_as_relative = false
-custom_minimum_size = Vector2(80, 0)
-offset_left = 946.0
-offset_top = 418.0
-offset_right = 1982.0
-offset_bottom = 495.0
-scale = Vector2(0.7, 0.7)
-size_flags_horizontal = 4
-size_flags_vertical = 0
-size_flags_stretch_ratio = 5.05
-tooltip_text = "Bun Bun
-"
-mouse_filter = 0
-theme_override_constants/line_spacing = 7
-theme_override_font_sizes/font_size = 35
-text = "You're hungry! Get 
-something to eat!"
-label_settings = SubResource("LabelSettings_njrbh")
-horizontal_alignment = 1
-vertical_alignment = 2
-justification_flags = 161
+[node name="Stage2" type="Node2D" unique_id=321141235]
+script = ExtResource("1_0f4t3")
 
-<<<<<<< HEAD
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodItem" unique_id=1690976748]
-position = Vector2(146, -64)
-shape = SubResource("CircleShape2D_ucr1m")
-=======
 [node name="Background" type="Sprite2D" parent="." unique_id=1835756057]
 position = Vector2(960, 540)
 texture = ExtResource("2_0f4t3")
->>>>>>> b870134cc467125bd94c880a35889a30a2844833
 
 [node name="BunBun" type="AnimatedSprite2D" parent="." unique_id=1404878669]
 position = Vector2(400, 700)
@@ -119,22 +70,22 @@ sprite_frames = SubResource("SpriteFrames_ibpa5")
 animation = &"idle"
 frame_progress = 0.25784948
 
-[node name="Carrot" type="Area2D" parent="." unique_id=291376857]
+[node name="Berry" type="Area2D" parent="." unique_id=291376857]
 scale = Vector2(0.5, 0.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="Carrot" unique_id=230945201]
-position = Vector2(1652, 1652.0001)
+[node name="Sprite2D" type="Sprite2D" parent="Berry" unique_id=230945201]
+position = Vector2(2771, 1457.0001)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("9_2gdo7")
+texture = ExtResource("9_q1ps1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Carrot" unique_id=1307153118]
-position = Vector2(1634, 1644)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Berry" unique_id=1307153118]
+position = Vector2(2753, 1449)
 shape = SubResource("RectangleShape2D_pq310")
 
-[node name="Chain" type="Sprite2D" parent="Carrot" unique_id=872799673]
-position = Vector2(1642, 1658)
+[node name="Chain" type="Sprite2D" parent="Berry" unique_id=872799673]
+position = Vector2(2761, 1463)
 scale = Vector2(0.556, 0.572)
-texture = ExtResource("10_0bk63")
+texture = ExtResource("10_0f4t3")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1863164960]
 layer = 0
@@ -200,6 +151,8 @@ justification_flags = 161
 position = Vector2(409.5, 1018.5)
 scale = Vector2(0.7762097, 0.6826924)
 texture = ExtResource("12_c8ds4")
+
+[node name="PuzzleOverlay" parent="." unique_id=613712543 instance=ExtResource("11_n4puk")]
 
 [node name="EyensteinHelper" parent="." unique_id=2100538655 instance=ExtResource("13_7cyy7")]
 position = Vector2(473, -169)

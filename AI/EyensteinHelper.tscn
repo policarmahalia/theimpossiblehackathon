@@ -64,10 +64,10 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_oe187"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 2.4,
 "texture": ExtResource("10_6hsv2")
 }, {
-"duration": 1.0,
+"duration": 2.6,
 "texture": ExtResource("11_b0xhw")
 }],
 "loop": true,
@@ -131,12 +131,11 @@ offset_top = 276.0
 offset_right = -86.0
 offset_bottom = 607.0
 
-[node name="ResponseLabel" type="Label" parent="ChatPanel" unique_id=466759373]
+[node name="ResponseLabel" type="RichTextLabel" parent="ChatPanel" unique_id=783342403]
 offset_left = 204.0
 offset_top = 420.0
 offset_right = 1704.0
 offset_bottom = 608.0
-theme_override_font_sizes/font_size = 21
 text = "What can I help You with?"
 horizontal_alignment = 1
 

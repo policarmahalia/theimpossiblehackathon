@@ -82,8 +82,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Puzzle3" type="Node2D" unique_id=1197595519]
-position = Vector2(1, 0)
+[node name="Puzzle3" type="CanvasLayer" unique_id=416649857]
 script = ExtResource("1_m5s68")
 
 [node name="PanelShadow" type="ColorRect" parent="." unique_id=1562568715]

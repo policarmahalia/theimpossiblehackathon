@@ -82,8 +82,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Puzzle2" type="Node2D" unique_id=1197595519]
-position = Vector2(1, 0)
+[node name="Puzzle2" type="CanvasLayer" unique_id=386405053]
 script = ExtResource("1_pfwix")
 
 [node name="PanelShadow" type="ColorRect" parent="." unique_id=1562568715]

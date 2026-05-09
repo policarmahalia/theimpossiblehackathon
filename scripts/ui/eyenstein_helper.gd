@@ -24,6 +24,7 @@ var COOLDOWN_SECONDS: float = 5.0
 
 func _ready():
 	API_KEY = _load_api_key()
+	eyenstein_big.play("default")
 	chat_panel.visible = false
 	loading_label.visible = false
 	eyenstein_sprite.play("float") 
@@ -49,13 +50,14 @@ func _open_chat():
 	chat_panel.visible = true
 	notif_bubble.visible = false
 	input_field.grab_focus()
-	response_label.text = "what can i do for you?"
+	response_label.clear()
+	response_label.add_text("what can i do for you?")
 
 func _on_close_pressed():
 	chat_panel.visible = false
 	notif_bubble.visible = true
 	input_field.text = ""
-	response_label.text = ""
+	response_label.clear()
 
 func _on_input_submitted(text):
 	_send_to_groq(text)
@@ -122,8 +124,8 @@ func _on_request_completed(result, response_code, _headers, body):
 		return
 
 	var response_text = data["choices"][0]["message"]["content"]
-	response_label.text = response_text
-	input_field.text = ""
+	response_label.clear()
+	response_label.add_text(response_text)
 
 func _parse_retry_delay(data: Dictionary) -> int:
 	var retry_after = data.get("error", {}).get("message", "")

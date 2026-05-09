@@ -1,6 +1,7 @@
-extends Node2D
-#
-#
+extends CanvasLayer
+
+signal puzzle_completed
+
 ## Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
 	#pass # Replace with function body.
@@ -88,7 +89,8 @@ func _lose_life():
 func _on_correct():
 	current_question += 1
 	if current_question >= questions.size():
-		get_tree().change_scene_to_file("res://scenes/puzzles/puzzle_3.tscn")
+		emit_signal("puzzle_completed")
+		visible = false
 	else:
 		load_question()
 

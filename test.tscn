@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b17228s7t7x2e"]
+
+[ext_resource type="PackedScene" uid="uid://b0eyn3rmwojae" path="res://AI/EyensteinHelper.tscn" id="1_37kl0"]
+
+[node name="Test" type="Node2D" unique_id=30896598]
+
+[node name="EyensteinHelper" parent="." unique_id=2100538655 instance=ExtResource("1_37kl0")]
