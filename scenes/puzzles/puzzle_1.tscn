@@ -82,8 +82,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Puzzle1" type="Node2D" unique_id=1197595519]
-position = Vector2(1, 0)
+[node name="Puzzle1" type="CanvasLayer" unique_id=2083056828]
+layer = 10
 script = ExtResource("1_qto03")
 
 [node name="PanelShadow" type="ColorRect" parent="." unique_id=1562568715]
@@ -97,10 +97,10 @@ color = Color(0.36078432, 0.3019608, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="PuzzlePannel" type="Panel" parent="." unique_id=1667781406]
-offset_left = -1.0
-offset_top = -2.0
-offset_right = 1920.0
-offset_bottom = 1074.0
+offset_left = 89.0
+offset_top = 122.0
+offset_right = 1848.0
+offset_bottom = 972.0
 size_flags_horizontal = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_yoonc")
 

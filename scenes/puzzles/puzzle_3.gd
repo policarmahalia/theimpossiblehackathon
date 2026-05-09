@@ -1,5 +1,6 @@
-extends Node2D
-#
+extends CanvasLayer
+
+signal puzzle_completed
 #
 ## Called when the node enters the scene tree for the first time.
 #func _ready() -> void:

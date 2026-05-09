@@ -1,111 +1,124 @@
-extends Node2D
+extends CanvasLayer
 
-@onready var bunbun = $BunBun
-@onready var carrot = $Carrot
-@onready var carrot_sprite = $Carrot/Sprite2D
-@onready var chain = $Carrot/Chain
-@onready var eyenstein_helper = $EyensteinHelper
-@onready var puzzle_overlay = $PuzzleOverlay
-@onready var notif_label = $Notification
 
-var is_moving: bool = false
-var target_position: Vector2 = Vector2.ZERO
-var move_speed: float = 100.0
-var puzzle_open: bool = false
-var heading_to_carrot: bool = false
-var carrot_unlocked: bool = false
+signal puzzle_completed
 
-const ANIM_IDLE = "idle"
-const ANIM_WALK = "walk"
+var lives = 4
+var anger_animations = ["default", "angry1", "angry2", "angry3"]
+
+var questions = [
+	{
+		"question": "What has four letters, sometimes nine, always six?",
+		"answers": ["A calendar", "A word", "The answer", "A riddle"],
+		"correct": 2
+	},
+	{
+		"question": "Click the smallest thing on this page.",
+		"answers": ["The moon", "An atom", "This full stop.", "A grain of sand"],
+		"correct": 2
+	},
+	{
+		"question": "How many months have 28 days?",
+		"answers": ["1", "2", "12", "It depends on the year"],
+		"correct": 2
+	},
+	{
+		"question": "A rooster lays an egg on the peak of a roof. Which side does it roll down?",
+		"answers": ["Left", "Right", "The steeper side", "Roosters don't lay eggs"],
+		"correct": 3
+	},
+]
+var current_question = 0
+
+@onready var eyestein = $Eyenstein
+@onready var buzzer = $Buzzer
+@onready var flash_timer = $FlashTimer
+@onready var meme_flash = $MemeFlash
+@onready var countdown_timer = $CountdownTimer
 
 
 func _ready():
-	bunbun.play(ANIM_IDLE)
-	notif_label.visible = false
-	carrot.visible = true
-	chain.visible = true
-	puzzle_overlay.visible = false
+	$AnswerA.pressed.connect(_on_answer.bind(0))
+	$AnswerB.pressed.connect(_on_answer.bind(1))
+	$AnswerC.pressed.connect(_on_answer.bind(2))
+	$AnswerD.pressed.connect(_on_answer.bind(3))
+	countdown_timer.timeout.connect(_on_time_up)
+	eyestein.play("default")
+	meme_flash.visible = false
+	load_question()
 
-	# listen for puzzle completed signal
-	puzzle_overlay.puzzle_completed.connect(_on_puzzle_completed)
 
-	# eyenstein flies in from off screen
-	var screen = get_viewport().size
-	eyenstein_helper.position = Vector2(-screen.x + 500, screen.y - 500)
+func load_question():
+	var q = questions[current_question]
+	$QuestionLabel.text = q["question"]
+	$AnswerA.text = q["answers"][0]
+	$AnswerB.text = q["answers"][1]
+	$AnswerC.text = q["answers"][2]
+	$AnswerD.text = q["answers"][3]
+
+
+func _on_answer(index: int):
+	var q = questions[current_question]
+	if index == q["correct"]:
+		_on_correct()
+	else:
+		_lose_life()
+
+
+func _on_time_up():
+	_lose_life()
+
+
+func _lose_life():
+	lives -= 1
+
+	if lives <= 0:
+		_on_final_loss()
+		return
+
+	buzzer.play()
+	eyestein.play(anger_animations[4 - lives])
+	countdown_timer.start()
+
+	# show warning screen after 2 fails
+	if lives == 2:
+		var warning = preload("res://scenes/ui/warning_screen.tscn").instantiate()
+		get_parent().add_child(warning)
+
+
+func _on_correct():
+	current_question += 1
+	if current_question >= questions.size():
+		emit_signal("puzzle_completed")
+		visible = false
+	else:
+		load_question()
+
+func _on_final_loss():
+	_disable_buttons()
+	countdown_timer.stop()
+	eyestein.play("angry3")
+	var vine = AudioStreamPlayer.new()
+	vine.stream = load("res://audio/sfx/vine_boom.mp3")
+	add_child(vine)
+	vine.play()
+	_flash_meme()
+
+
+func _flash_meme():
+	meme_flash.visible = true
 	var tween = create_tween()
-	tween.tween_property(eyenstein_helper, "position", Vector2(screen.x - 700, screen.y - 100), 1.5)\
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-
-	await get_tree().create_timer(3.0).timeout
-	notif_label.visible = true
-
-
-func _input(event):
-	if puzzle_open:
-		return
-
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var clicked_pos = get_global_mouse_position()
-
-		# unlocked carrot — click to go to stage 2
-		if carrot_unlocked and clicked_pos.distance_to(carrot_sprite.global_position) < 80:
-			get_tree().change_scene_to_file("res://scenes/world/stage_2.tscn")
-			return
-
-		# locked carrot — walk to it to trigger puzzle
-		if not carrot_unlocked and clicked_pos.distance_to(carrot_sprite.global_position) < 80:
-			_walk_to_carrot()
-			return
-
-		# move bunny anywhere else
-		heading_to_carrot = false
-		_move_bunny_to(clicked_pos)
+	tween.tween_property(meme_flash, "modulate:a", 0.4, 0.1)
+	tween.tween_interval(0.4)
+	tween.tween_property(meme_flash, "modulate:a", 0.0, 0.8)
+	tween.tween_callback(func():
+		meme_flash.visible = false
+		get_tree().change_scene_to_file("res://scenes/bossfight/boss_fight.tscn")
+	)
 
 
-func _move_bunny_to(pos: Vector2):
-	target_position = pos
-	is_moving = true
-	bunbun.flip_h = pos.x < bunbun.position.x
-	bunbun.play(ANIM_WALK)
-
-
-func _walk_to_carrot():
-	heading_to_carrot = true
-	_move_bunny_to(carrot_sprite.global_position)
-
-
-func _process(delta):
-	if is_moving:
-		var direction = target_position - bunbun.position
-		if direction.length() > 5:
-			bunbun.position += direction.normalized() * move_speed * delta
-
-			# check if bunny reached carrot while walking to it
-			if heading_to_carrot and bunbun.position.distance_to(carrot_sprite.global_position) < 60:
-				is_moving = false
-				bunbun.play(ANIM_IDLE)
-				_open_puzzle()
-		else:
-			bunbun.position = target_position
-			is_moving = false
-			bunbun.play(ANIM_IDLE)
-
-			if heading_to_carrot:
-				heading_to_carrot = false
-				_open_puzzle()
-
-
-func _open_puzzle():
-	if puzzle_open or carrot_unlocked:
-		return
-	puzzle_open = true
-	puzzle_overlay.visible = true
-
-
-func _on_puzzle_completed():
-	puzzle_open = false
-	puzzle_overlay.visible = false
-	carrot_unlocked = true
-	chain.visible = false
-	notif_label.text = "click the carrot!"
-	notif_label.visible = true
+func _disable_buttons():
+	$AnswerA.disabled = true
+	$AnswerB.disabled = true
+	$AnswerC.disabled = true
+	$AnswerD.disabled = true

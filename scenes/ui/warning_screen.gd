@@ -29,3 +29,6 @@ func bounce_animation():
 func _ready():
 	angry.play("default")
 	bounce_animation()
+	# auto dismiss after 5 seconds
+	await get_tree().create_timer(5.0).timeout
+	queue_free()
