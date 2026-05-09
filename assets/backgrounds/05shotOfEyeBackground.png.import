@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dctt2u02f2xr4"
-path="res://.godot/imported/05shotOfEyeBackground.png-602c5375ac085ccf9c327d26bbe1ca83.ctex"
+path="res://.godot/imported/05shotOfEyeBackground.png-5533a71f18769c36baf23c3b595d77fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/05shotOfEyeBackground.png"
-dest_files=["res://.godot/imported/05shotOfEyeBackground.png-602c5375ac085ccf9c327d26bbe1ca83.ctex"]
+source_file="res://assets/backgrounds/05shotOfEyeBackground.png"
+dest_files=["res://.godot/imported/05shotOfEyeBackground.png-5533a71f18769c36baf23c3b595d77fe.ctex"]
 
 [params]
 
