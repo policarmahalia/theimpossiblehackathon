@@ -16,12 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://iea3xfholur6" path="res://assets/sprites/bunny/bunWalk4.png" id="7_rkr6x"]
 [ext_resource type="Texture2D" uid="uid://bijiunjq21kaf" path="res://assets/sprites/bunny/bunWalk4L.png" id="8_mpoli"]
 [ext_resource type="Texture2D" uid="uid://d4boyreu7jkhi" path="res://assets/sprites/eyenstyne/aiExtraIdle.png" id="12_khvw4"]
-[ext_resource type="Texture2D" uid="uid://vuttupou35lp" path="res://assets/sprites/eyenstyne/aiBeam1.png" id="17_4mtqu"]
-[ext_resource type="Script" uid="uid://c5yli7u4dl16a" path="res://scenes/bossfight/opening_q.gd" id="17_o7nqk"]
-[ext_resource type="Texture2D" uid="uid://da6o0a2hhagy8" path="res://assets/sprites/eyenstyne/aiBeam2.png" id="18_mpoli"]
-[ext_resource type="Texture2D" uid="uid://bmbp3xg2t23yv" path="res://assets/sprites/eyenstyne/wrong1.png" id="19_1pt0v"]
-[ext_resource type="Texture2D" uid="uid://ceolfdcdpl1x5" path="res://assets/sprites/eyenstyne/wrong2.png" id="20_o7nqk"]
-[ext_resource type="Texture2D" uid="uid://c8g2dvyu3leun" path="res://assets/sprites/eyenstyne/wrong3.png" id="21_uf5h8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_akces"]
 animations = [{
@@ -99,20 +93,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_k5e82"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("17_4mtqu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_mpoli")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Node2D" type="Node2D" unique_id=658906635]
 script = ExtResource("1_tbbcy")
 
@@ -122,9 +102,10 @@ offset_bottom = 1080.0
 texture = ExtResource("1_ktohs")
 
 [node name="bunbun" type="AnimatedSprite2D" parent="." unique_id=427043312]
-position = Vector2(574, 763)
+position = Vector2(373, 767)
 sprite_frames = SubResource("SpriteFrames_akces")
 animation = &"walkL"
+frame_progress = 0.1895289
 
 [node name="ai" type="AnimatedSprite2D" parent="." unique_id=2052624380]
 position = Vector2(1336, 533)
@@ -146,59 +127,47 @@ offset_bottom = 878.0
 text = "RED"
 
 [node name="openingQ" type="Label" parent="." unique_id=728329782]
-offset_left = 222.0
-offset_top = 222.0
-offset_right = 670.0
-offset_bottom = 271.0
-text = "How would you 
-like being asked 
-stupid questions?
+offset_left = 423.0
+offset_top = 245.0
+offset_right = 840.0
+offset_bottom = 467.0
+text = "How would you like being asked stupid questions?
 "
-uppercase = true
-script = ExtResource("17_o7nqk")
-
-[node name="preQuestion" type="Label" parent="." unique_id=1165271063]
-offset_left = 225.0
-offset_top = 220.0
-offset_right = 691.0
-offset_bottom = 268.0
-text = "What is this color?"
-uppercase = true
 
 [node name="q1" type="Label" parent="." unique_id=1568279166]
-offset_left = 229.0
-offset_top = 271.0
-offset_right = 897.0
-offset_bottom = 513.0
-text = "RED"
+offset_left = 414.0
+offset_top = 282.0
+offset_right = 830.0
+offset_bottom = 336.0
+text = "q1"
 
 [node name="q2" type="Label" parent="." unique_id=1879864986]
-offset_left = 229.0
-offset_top = 271.0
-offset_right = 915.0
-offset_bottom = 513.0
-text = "ORANGE"
+offset_left = 408.0
+offset_top = 385.0
+offset_right = 794.0
+offset_bottom = 438.0
+text = "q2"
 
 [node name="q3" type="Label" parent="." unique_id=1817934969]
-offset_left = 229.0
-offset_top = 271.0
-offset_right = 977.0
-offset_bottom = 516.0
-text = "BLACK"
+offset_left = 419.0
+offset_top = 323.0
+offset_right = 827.0
+offset_bottom = 369.0
+text = "q3"
 
 [node name="pink" type="Button" parent="." unique_id=1375804832]
-offset_left = 833.0
-offset_top = 787.0
-offset_right = 1098.0
-offset_bottom = 875.0
+offset_left = 1668.0
+offset_top = 1572.0
+offset_right = 1933.0
+offset_bottom = 1660.0
 text = "PINK
 "
 
 [node name="orange" type="Button" parent="." unique_id=1085821001]
-offset_left = 60.0
-offset_top = 782.0
-offset_right = 319.0
-offset_bottom = 879.0
+offset_left = 895.0
+offset_top = 1567.0
+offset_right = 1154.0
+offset_bottom = 1664.0
 text = "ORANGE"
 
 [node name="purple" type="Button" parent="." unique_id=444746905]
@@ -214,33 +183,3 @@ offset_top = 781.0
 offset_right = 320.0
 offset_bottom = 878.0
 text = "BLACK"
-
-[node name="beamleft" type="AnimatedSprite2D" parent="." unique_id=1400912781]
-visible = false
-position = Vector2(768, 684.5)
-scale = Vector2(0.6802084, 0.50277776)
-sprite_frames = SubResource("SpriteFrames_k5e82")
-
-[node name="beamright" type="AnimatedSprite2D" parent="." unique_id=228525411]
-visible = false
-position = Vector2(986.00006, 702)
-scale = Vector2(0.33125, 0.5388889)
-sprite_frames = SubResource("SpriteFrames_k5e82")
-
-[node name="wrong1" type="TextureRect" parent="." unique_id=1596837077]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("19_1pt0v")
-
-[node name="wrong2" type="TextureRect" parent="." unique_id=270528005]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("20_o7nqk")
-
-[node name="wrong3" type="TextureRect" parent="." unique_id=591080060]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("21_uf5h8")
