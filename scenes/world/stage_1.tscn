@@ -72,7 +72,7 @@ position = Vector2(1453, 326)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ibpa5")
 animation = &"idle"
-frame_progress = 0.6864239
+frame_progress = 0.2143238
 
 [node name="Carrot" type="Area2D" parent="." unique_id=291376857]
 scale = Vector2(0.5, 0.5)
@@ -106,7 +106,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(1622, 817)
 sprite_frames = SubResource("SpriteFrames_pq310")
 animation = &"idle"
-frame_progress = 0.7175865
+frame_progress = 0.37391633
 
 [node name="NotifBubble" type="Label" parent="EyensteinHelper" unique_id=1332005511]
 offset_right = 40.0

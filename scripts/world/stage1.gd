@@ -35,9 +35,9 @@ func _ready():
 
 	# eyenstein flies in from off screen bottom left
 	var screen = get_viewport().size
-	eyenstein_helper.position = Vector2(-100, screen.y + 100)   # starts off screen
+	eyenstein_helper.position = Vector2(-screen .x + 500, screen.y - 500)   # starts off screen
 	var tween = create_tween()
-	tween.tween_property(eyenstein_helper, "position", Vector2(80, screen.y - 80), 1.5)\
+	tween.tween_property(eyenstein_helper, "position", Vector2(screen.x - 200, screen.y - 300), 1.5)\
 		 .set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 	# connect signals

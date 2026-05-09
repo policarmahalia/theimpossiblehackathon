@@ -83,7 +83,7 @@ script = ExtResource("1_ut2lm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EyensteinArea" unique_id=1630049795]
 position = Vector2(440, -371)
 sprite_frames = SubResource("SpriteFrames_sfvxg")
-animation = &"angry"
+animation = &"float"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyensteinArea" unique_id=162832562]
 shape = SubResource("CircleShape2D_6hsv2")
