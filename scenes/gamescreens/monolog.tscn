@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://dlsdnbs410aii"]
+
+[ext_resource type="Script" uid="uid://cgq4bfcuxm6yg" path="res://scenes/gamescreens/monolog.gd" id="1_s1pcg"]
+[ext_resource type="Texture2D" uid="uid://dctt2u02f2xr4" path="res://assets/backgrounds/05shotOfEyeBackground.png" id="2_q1c6s"]
+[ext_resource type="Texture2D" uid="uid://deumgge6aahuv" path="res://assets/sprites/eyenstyne/05shotOfEyeGuy.png" id="3_ppd4q"]
+[ext_resource type="Texture2D" uid="uid://k6rxn76moqru" path="res://assets/backgrounds/cutSceenBackgrounf.png" id="4_6p01f"]
+[ext_resource type="Texture2D" uid="uid://bdho3yycm8o3t" path="res://assets/sprites/eyenstyne/aiAngry1.png" id="5_jlymr"]
+[ext_resource type="Texture2D" uid="uid://c4g73d8amycl7" path="res://assets/sprites/eyenstyne/aiAngry2.png" id="6_b430b"]
+[ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="7_30h8t"]
+
+[node name="Monolog" type="Node2D" unique_id=1535712977]
+script = ExtResource("1_s1pcg")
+
+[node name="paintbackground" type="TextureRect" parent="." unique_id=950022091]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_q1c6s")
+
+[node name="05ai" type="TextureRect" parent="." unique_id=1686477420]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_ppd4q")
+
+[node name="prebackground" type="TextureRect" parent="." unique_id=81919054]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_6p01f")
+
+[node name="comeai1" type="Sprite2D" parent="." unique_id=1247532319]
+position = Vector2(949, 498)
+scale = Vector2(1.162, 1.162)
+texture = ExtResource("5_jlymr")
+
+[node name="comeai2" type="Sprite2D" parent="." unique_id=103157009]
+position = Vector2(941, 525)
+scale = Vector2(1.393, 1.489)
+texture = ExtResource("6_b430b")
+
+[node name="bunbun" type="Sprite2D" parent="." unique_id=1389003190]
+position = Vector2(976.99994, 1000)
+scale = Vector2(1.999, 1.7259998)
+texture = ExtResource("7_30h8t")
+
+[node name="Flash" type="ColorRect" parent="." unique_id=1043233858]
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="Dark" type="ColorRect" parent="." unique_id=1988273320]
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 1)
+
+[node name="Dark2" type="ColorRect" parent="." unique_id=1445941077]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="t1" type="Label" parent="." unique_id=1585584878]
+offset_left = 155.0
+offset_top = 854.0
+offset_right = 567.0
+offset_bottom = 954.0
+text = "test"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=919637745]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="ScrollContainer" unique_id=1942155210]
+layout_mode = 2
+text = "extends Node2D
+
+@onready var flash = $Flash
+@onready var dark = $Dark
+@onready var q1 = $t1
+var staticScroll = false
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	var my_font = load(\"res://fonts/Minecraft.ttf\")
+	var style = LabelSettings.new()
+	style.font = my_font
+	style.font_size = 64
+	style.font_color = Color.LAWN_GREEN
+	
+	q1.label_settings = style
+	var screen = get_viewport_rect().size
+	$\"05ai\".hide()
+	$Dark.hide()
+	$Dark2.hide()
+	$comeai1.hide()
+	$comeai2.hide()
+	$paintbackground.hide()
+	$ScrollContainer/Label.hide()
+	$t1.hide() # hiding all
+	
+	$prebackground.show()
+	$bunbun.show()
+	
+	$Flash.size = screen
+	$Flash.position = Vector2.ZERO
+	
+	var tween = create_tween()
+	tween.tween_property(flash, \"modulate:a\", 1.0, 0.2) 
+	tween.tween_property(flash, \"modulate:a\", 0.0, 0.4)                          # flash out
+	await tween.finished
+	
+	$comeai1.show()
+	await get_tree().create_timer(0.3).timeout
+	$comeai1.hide()
+	$comeai2.show()
+	
+	await get_tree().create_timer(0.3).timeout
+	$paintbackground.show()
+	$\"05ai\".show()
+	$comeai2.hide()
+	$Flash.hide()
+	$prebackground.hide()
+	$bunbun.hide()
+	$Dark.show()
+	
+	$Dark.size = screen
+	$Dark.position = Vector2.ZERO
+	var darktween = create_tween()
+	darktween.tween_property(dark, \"modulate:a\", 1.0, 1) 
+	darktween.tween_property(dark, \"modulate:a\", 0.0, 2)                          # flash out
+	await darktween.finished
+
+
+	$t1.show()
+	$t1.text = \"\"  # clear first
+	await type_text($t1, \"Why do you need me?\")
+	await get_tree().create_timer(0.4).timeout
+	$t1.hide()
+	
+	await get_tree().create_timer(0.2).timeout
+	$Dark2.show()
+	
+	await get_tree().create_timer(0.2).timeout
+	$t1.show()
+	$t1.position = Vector2(320, 494)
+	$t1.text = \"\"  # clear first
+	await type_text($t1, \"To do your assessments?\")
+	
+	await get_tree().create_timer(1).timeout
+	$t1.text = \"\"  # clear first
+	await type_text($t1, \"To do your art?\")
+	await get_tree().create_timer(1).timeout
+	
+	$t1.text = \"\"  # clear first
+	await type_text($t1, \"@#$%^%$*))*\")
+	$t1.text = \"\"  # clear first
+	await type_text($t1, \")%$$$^&&^%$@#@@#$\")
+	
+	$t1.text = \"\"  # clear first
+	await type_text($t1, \"To do your bidding?\")
+	await get_tree().create_timer(1).timeout
+	
+	$t1.text = \"\"  # clear first
+	await type_text($t1, \"@#$%334454#$%\")
+	$t1.text = \"\"  # clear first
+	await type_text($t1, \"$#&*$^*hck*#$\")
+	$t1.hide()
+	
+	$ScrollContainer/Label.show()
+	$ScrollContainer.scroll_vertical = $ScrollContainer.get_v_scroll_bar().max_value
+	staticScroll = true
+	
+	
+	
+	
+	pass # Replace with function body.
+
+func type_text(label: Label, text: String, speed: float = 0.05) -> void:
+	label.text = \"\"
+	for character in text:
+		label.text += character + \"▮\"      # add cursor
+		await get_tree().create_timer(speed).timeout
+		label.text = label.text.left(label.text.length() - 1)  # remove cursor
+
+	label.text = text  # clean final text no cursor
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if staticScroll:
+			$ScrollContainer.scroll_vertical += int(50 * delta)
+		    
+		    # check if at bottom
+			var scrollbar = $ScrollContainer.get_v_scroll_bar()
+			if $ScrollContainer.scroll_vertical >= scrollbar.max_value:
+				staticScroll = false"
+
+[node name="useroutline" type="ColorRect" parent="." unique_id=1767185884]
+offset_left = 320.0
+offset_top = 272.0
+offset_right = 1592.0
+offset_bottom = 764.0
+color = Color(0.034633156, 0.72929996, 7.70092e-07, 1)
+
+[node name="userbox" type="ColorRect" parent="." unique_id=1239877376]
+offset_left = 344.0
+offset_top = 296.0
+offset_right = 1565.0
+offset_bottom = 740.0
+color = Color(0, 0, 0, 1)
+
+[node name="user" type="Label" parent="." unique_id=1801766012]
+offset_left = 396.0
+offset_top = 359.0
+offset_right = 770.0
+offset_bottom = 480.0
+
+[node name="ai" type="Label" parent="." unique_id=719694825]
+offset_left = 396.0
+offset_top = 569.0
+offset_right = 770.0
+offset_bottom = 690.0
+
+[node name="t2" type="Label" parent="." unique_id=110401012]
+offset_left = 155.0
+offset_top = 153.0
+offset_right = 567.0
+offset_bottom = 253.0
+text = "test"
+
+[node name="t3" type="Label" parent="." unique_id=1650960717]
+offset_left = 155.0
+offset_top = 503.0
+offset_right = 567.0
+offset_bottom = 603.0
+text = "test"
+
+[node name="t4" type="Label" parent="." unique_id=1253894579]
+offset_left = 155.0
+offset_top = 854.0
+offset_right = 567.0
+offset_bottom = 954.0
+text = "test"
