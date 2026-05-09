@@ -1,6 +1,79 @@
 [gd_scene format=3 uid="uid://b0eyn3rmwojae"]
 
 [ext_resource type="Script" uid="uid://vd52rspvsutl" path="res://scripts/ui/eyenstein_helper.gd" id="1_ut2lm"]
+[ext_resource type="Texture2D" uid="uid://dp323ke33hgs3" path="res://assets/sprites/eyenstyne/ai3Anger1.png" id="2_mds7i"]
+[ext_resource type="Texture2D" uid="uid://crqtga33i0gna" path="res://assets/sprites/eyenstyne/ai3Angry2.png" id="3_v03u0"]
+[ext_resource type="Texture2D" uid="uid://cgdrs7qrdrga0" path="res://assets/sprites/eyenstyne/ai1Angry1.png" id="4_6hsv2"]
+[ext_resource type="Texture2D" uid="uid://buobgt3m0n1v0" path="res://assets/sprites/eyenstyne/ai1Angry2.png" id="5_b0xhw"]
+[ext_resource type="Texture2D" uid="uid://bjyuhm86a1gl5" path="res://assets/sprites/eyenstyne/aiIdle1.png" id="6_oe187"]
+[ext_resource type="Texture2D" uid="uid://doqeqjmqd2o3v" path="res://assets/sprites/eyenstyne/aiIdle2.png" id="7_yhn1m"]
+[ext_resource type="Texture2D" uid="uid://dscq3ceik8erv" path="res://assets/sprites/eyenstyne/ai2Angry1.png" id="8_mec7m"]
+[ext_resource type="Texture2D" uid="uid://cb23jn5sd8gnp" path="res://assets/sprites/eyenstyne/ai2Angry2.png" id="9_akhd2"]
+[ext_resource type="Texture2D" uid="uid://hqi0a7dlxvl4" path="res://assets/sprites/eyenstyne/aiLookDown1.png" id="10_6hsv2"]
+[ext_resource type="Texture2D" uid="uid://wlfjv56flne6" path="res://assets/sprites/eyenstyne/aiLookDown2.png" id="11_b0xhw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sfvxg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mds7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v03u0")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6hsv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b0xhw")
+}],
+"loop": true,
+"name": &"confused",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_oe187")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yhn1m")
+}],
+"loop": true,
+"name": &"float",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mec7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_akhd2")
+}],
+"loop": true,
+"name": &"irritated",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6hsv2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oe187"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_6hsv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_b0xhw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="EyensteinHelper" type="Node2D" unique_id=2100538655]
 script = ExtResource("1_ut2lm")
@@ -8,8 +81,12 @@ script = ExtResource("1_ut2lm")
 [node name="EyensteinArea" type="Area2D" parent="." unique_id=614391715]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EyensteinArea" unique_id=1630049795]
+position = Vector2(440, -371)
+sprite_frames = SubResource("SpriteFrames_sfvxg")
+animation = &"angry"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EyensteinArea" unique_id=162832562]
+shape = SubResource("CircleShape2D_6hsv2")
 
 [node name="NotifBubble" type="Label" parent="." unique_id=207752963]
 offset_right = 40.0
@@ -20,26 +97,55 @@ offset_bottom = 16.0
 [node name="ChatPanel" type="CanvasLayer" parent="." unique_id=1773103750]
 
 [node name="DimOverlay" type="ColorRect" parent="ChatPanel" unique_id=1144057762]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.9254902)
 
 [node name="PanelContainer" type="PanelContainer" parent="ChatPanel" unique_id=1743767433]
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(600, 500)
+offset_left = 210.0
+offset_top = 400.0
+offset_right = 1710.0
+offset_bottom = 900.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ChatPanel/PanelContainer" unique_id=747542936]
 layout_mode = 2
 
-[node name="EinsteinBig" type="AnimatedSprite2D" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=1364695601]
+[node name="EyensteinBig" type="AnimatedSprite2D" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=1364695601]
+position = Vector2(713, -19)
+scale = Vector2(1.65, 1.556)
+sprite_frames = SubResource("SpriteFrames_oe187")
 
 [node name="ResponseLabel" type="Label" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=466759373]
 layout_mode = 2
+text = "What can I help You with?"
+horizontal_alignment = 1
 
 [node name="InputField" type="LineEdit" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=1665802703]
+custom_minimum_size = Vector2(500, 60)
 layout_mode = 2
+size_flags_stretch_ratio = 0.0
 
 [node name="SendButton" type="Button" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=937007160]
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="CloseButton" type="Button" parent="ChatPanel/PanelContainer/VBoxContainer" unique_id=639951759]
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.0
+
+[node name="LoadingLabel" type="Label" parent="ChatPanel" unique_id=560217381]
+offset_right = 40.0
+offset_bottom = 16.0

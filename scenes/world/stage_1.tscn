@@ -8,8 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://n6rpaehc6edc" path="res://assets/sprites/bunny/bunWalk3.png" id="6_1te07"]
 [ext_resource type="Texture2D" uid="uid://iea3xfholur6" path="res://assets/sprites/bunny/bunWalk4.png" id="7_pq310"]
 [ext_resource type="Texture2D" uid="uid://bdpx1hjjo3tlt" path="res://assets/sprites/food/carrotLock.png" id="8_faaqq"]
+[ext_resource type="Texture2D" uid="uid://dy24qj2bch52p" path="res://assets/sprites/food/carrot.png" id="9_1te07"]
 [ext_resource type="Texture2D" uid="uid://bjyuhm86a1gl5" path="res://assets/sprites/eyenstyne/aiIdle1.png" id="9_yc0xd"]
 [ext_resource type="Texture2D" uid="uid://doqeqjmqd2o3v" path="res://assets/sprites/eyenstyne/aiIdle2.png" id="10_1te07"]
+[ext_resource type="Script" uid="uid://bnsnal0m7pwvg" path="res://scripts/world/stage1.gd" id="12_pq310"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibpa5"]
 animations = [{
@@ -42,7 +44,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a83q4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pq310"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pq310"]
 animations = [{
@@ -59,6 +61,7 @@ animations = [{
 }]
 
 [node name="Stage1" type="Node2D" unique_id=321141235]
+script = ExtResource("12_pq310")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1835756057]
 position = Vector2(960, 540)
@@ -69,19 +72,23 @@ position = Vector2(1453, 326)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ibpa5")
 animation = &"idle"
-frame_progress = 0.14378439
+frame_progress = 0.6864239
 
-[node name="FoodItem" type="Area2D" parent="." unique_id=291376857]
+[node name="Carrot" type="Area2D" parent="." unique_id=291376857]
+scale = Vector2(0.5, 0.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="FoodItem" unique_id=230945201]
-position = Vector2(819, 786)
+[node name="Sprite2D" type="Sprite2D" parent="Carrot" unique_id=230945201]
+position = Vector2(1621.9999, 2788)
 scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_1te07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carrot" unique_id=1307153118]
+shape = SubResource("RectangleShape2D_pq310")
+
+[node name="Chain" type="Sprite2D" parent="Carrot" unique_id=872799673]
+position = Vector2(1642, 1658)
+scale = Vector2(0.556, 0.572)
 texture = ExtResource("8_faaqq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FoodItem" unique_id=1307153118]
-shape = SubResource("CircleShape2D_a83q4")
-
-[node name="Chain" type="Sprite2D" parent="FoodItem" unique_id=872799673]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1863164960]
 
@@ -99,7 +106,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(1622, 817)
 sprite_frames = SubResource("SpriteFrames_pq310")
 animation = &"idle"
-frame_progress = 0.7577982
+frame_progress = 0.7175865
 
 [node name="NotifBubble" type="Label" parent="EyensteinHelper" unique_id=1332005511]
 offset_right = 40.0
