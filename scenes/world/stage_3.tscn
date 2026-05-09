@@ -1,3 +1,157 @@
 [gd_scene format=3 uid="uid://chypscpjd3gls"]
 
+[ext_resource type="Script" uid="uid://cclmph2o4y4h4" path="res://scripts/world/stage_3.gd" id="1_7imqb"]
+[ext_resource type="Texture2D" uid="uid://dpqcl2inpyla4" path="res://assets/backgrounds/mainBackground.png" id="1_bb3ho"]
+[ext_resource type="Texture2D" uid="uid://dwtlopc3ck78h" path="res://assets/sprites/bunny/bunStandFront1.png" id="2_ru2cd"]
+[ext_resource type="Texture2D" uid="uid://b52267b06wl51" path="res://assets/sprites/bunny/bunStandFront2.png" id="3_7imqb"]
+[ext_resource type="Texture2D" uid="uid://qsemarp42q5h" path="res://assets/sprites/bunny/bunWalk1.png" id="4_dbb86"]
+[ext_resource type="Texture2D" uid="uid://dnwg8mmy5j7lr" path="res://assets/sprites/bunny/bunWalk2.png" id="5_7keli"]
+[ext_resource type="Texture2D" uid="uid://n6rpaehc6edc" path="res://assets/sprites/bunny/bunWalk3.png" id="6_npbub"]
+[ext_resource type="Texture2D" uid="uid://iea3xfholur6" path="res://assets/sprites/bunny/bunWalk4.png" id="7_y4a75"]
+[ext_resource type="Texture2D" uid="uid://06l8tp2j5g8g" path="res://assets/sprites/food/celery.png" id="8_aoayk"]
+[ext_resource type="Texture2D" uid="uid://1tn425p7tsuc" path="res://assets/sprites/food/celeryLock.png" id="9_135h4"]
+[ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="10_ii4l7"]
+[ext_resource type="Texture2D" uid="uid://bsty3df7tytfq" path="res://assets/sprites/life1.png" id="11_i8k6v"]
+[ext_resource type="PackedScene" uid="uid://b0eyn3rmwojae" path="res://AI/EyensteinHelper.tscn" id="12_vlyu0"]
+[ext_resource type="PackedScene" uid="uid://drf540uu0efjd" path="res://scenes/puzzles/puzzle_3.tscn" id="14_dbb86"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3qkhm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ru2cd")
+}, {
+"duration": 1.7,
+"texture": ExtResource("3_7imqb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dbb86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7keli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_npbub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_y4a75")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dihf"]
+size = Vector2(388, 212)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5siw8"]
+bg_color = Color(0.89059, 0.89059, 0.8905901, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f70rw"]
+font_size = 37
+font_color = Color(0, 0, 0, 1)
+
 [node name="Stage3" type="Node2D" unique_id=862377058]
+script = ExtResource("1_7imqb")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=35504042]
+position = Vector2(960, 540)
+texture = ExtResource("1_bb3ho")
+
+[node name="BunBun" type="AnimatedSprite2D" parent="." unique_id=1065645370]
+position = Vector2(400, 700)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_3qkhm")
+animation = &"idle"
+
+[node name="Celery" type="Area2D" parent="." unique_id=1492139112]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Celery" unique_id=362272550]
+position = Vector2(2392, 348.00012)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_aoayk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Celery" unique_id=966511167]
+position = Vector2(2410, 392)
+shape = SubResource("RectangleShape2D_5dihf")
+
+[node name="Chain" type="Sprite2D" parent="Celery" unique_id=1880082076]
+position = Vector2(2394.0002, 358.00006)
+scale = Vector2(0.556, 0.572)
+texture = ExtResource("9_135h4")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1640548403]
+layer = 0
+
+[node name="IrritationMeter" type="HBoxContainer" parent="HUD" unique_id=91287678]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthPanel" type="PanelContainer" parent="HUD" unique_id=798984175]
+custom_minimum_size = Vector2(700, 200)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_right = 300.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5siw8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/HealthPanel" unique_id=517486091]
+layout_mode = 2
+
+[node name="BunBunPortrait" type="TextureRect" parent="HUD/HealthPanel/HBoxContainer" unique_id=1380964186]
+layout_mode = 2
+texture = ExtResource("10_ii4l7")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HealthPanel/HBoxContainer" unique_id=1387927495]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HUD/HealthPanel" unique_id=467402963]
+layout_mode = 2
+
+[node name="BunBunPortrait" type="TextureRect" parent="HUD/HealthPanel/HBoxContainer2" unique_id=588935059]
+layout_mode = 2
+texture = ExtResource("10_ii4l7")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HealthPanel/HBoxContainer2" unique_id=1202939657]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="HUD" unique_id=223383051]
+z_index = 1
+z_as_relative = false
+custom_minimum_size = Vector2(80, 0)
+offset_left = 220.0
+offset_top = 930.0
+offset_right = 479.0
+offset_bottom = 967.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+size_flags_stretch_ratio = 5.05
+tooltip_text = "Bun Bun
+"
+theme_override_constants/line_spacing = 7
+theme_override_font_sizes/font_size = 43
+text = "Bun Bun"
+label_settings = SubResource("LabelSettings_f70rw")
+vertical_alignment = 2
+justification_flags = 161
+
+[node name="Healthbar" type="Sprite2D" parent="HUD" unique_id=1275244294]
+position = Vector2(409.5, 1018.5)
+scale = Vector2(0.7762097, 0.6826924)
+texture = ExtResource("11_i8k6v")
+
+[node name="EyensteinHelper" parent="." unique_id=2100538655 instance=ExtResource("12_vlyu0")]
+position = Vector2(473, -169)
+
+[node name="PuzzleOverlay" parent="." unique_id=416649857 instance=ExtResource("14_dbb86")]
