@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://bmbp3xg2t23yv" path="res://assets/sprites/eyenstyne/wrong1.png" id="19_1pt0v"]
 [ext_resource type="Texture2D" uid="uid://ceolfdcdpl1x5" path="res://assets/sprites/eyenstyne/wrong2.png" id="20_o7nqk"]
 [ext_resource type="Texture2D" uid="uid://c8g2dvyu3leun" path="res://assets/sprites/eyenstyne/wrong3.png" id="21_uf5h8"]
+[ext_resource type="AudioStream" uid="uid://dg71vduuqfoa5" path="res://assets/mariaAudio/bossBackground.mp3" id="23_uf5h8"]
+[ext_resource type="AudioStream" uid="uid://driwqw5bey42r" path="res://assets/mariaAudio/laser.mp3" id="24_mwk0b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_akces"]
 animations = [{
@@ -170,7 +172,7 @@ offset_left = 229.0
 offset_top = 271.0
 offset_right = 897.0
 offset_bottom = 513.0
-text = "RED"
+text = "BLUE"
 
 [node name="q2" type="Label" parent="." unique_id=1879864986]
 offset_left = 229.0
@@ -244,3 +246,10 @@ visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("21_uf5h8")
+
+[node name="backmusic" type="AudioStreamPlayer2D" parent="." unique_id=906024035]
+stream = ExtResource("23_uf5h8")
+volume_db = -5.814
+
+[node name="laser" type="AudioStreamPlayer2D" parent="." unique_id=2054891108]
+stream = ExtResource("24_mwk0b")

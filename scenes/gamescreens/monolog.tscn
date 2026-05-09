@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bdho3yycm8o3t" path="res://assets/sprites/eyenstyne/aiAngry1.png" id="5_jlymr"]
 [ext_resource type="Texture2D" uid="uid://c4g73d8amycl7" path="res://assets/sprites/eyenstyne/aiAngry2.png" id="6_b430b"]
 [ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="7_30h8t"]
+[ext_resource type="AudioStream" uid="uid://lpu1ur2di28r" path="res://assets/mariaAudio/ai05.mp3" id="8_q1c6s"]
+[ext_resource type="AudioStream" uid="uid://cv2d4ev4a1657" path="res://assets/mariaAudio/jumpscare.mp3" id="9_ppd4q"]
+[ext_resource type="AudioStream" uid="uid://7ivpqf7fg6e1" path="res://assets/mariaAudio/static.mp3" id="10_6p01f"]
+[ext_resource type="AudioStream" uid="uid://bhfid70xwrxfa" path="res://assets/mariaAudio/impact.mp3" id="11_jlymr"]
 
 [node name="Monolog" type="Node2D" unique_id=1535712977]
 script = ExtResource("1_s1pcg")
@@ -216,22 +220,36 @@ offset_right = 770.0
 offset_bottom = 690.0
 
 [node name="t2" type="Label" parent="." unique_id=110401012]
-offset_left = 155.0
+offset_left = 87.0
 offset_top = 153.0
-offset_right = 567.0
+offset_right = 499.0
 offset_bottom = 253.0
 text = "test"
 
 [node name="t3" type="Label" parent="." unique_id=1650960717]
-offset_left = 155.0
-offset_top = 503.0
-offset_right = 567.0
-offset_bottom = 603.0
+offset_left = 87.0
+offset_top = 450.0
+offset_right = 499.0
+offset_bottom = 550.0
 text = "test"
 
 [node name="t4" type="Label" parent="." unique_id=1253894579]
-offset_left = 155.0
+offset_left = 87.0
 offset_top = 854.0
-offset_right = 567.0
+offset_right = 499.0
 offset_bottom = 954.0
 text = "test"
+
+[node name="ai05" type="AudioStreamPlayer2D" parent="." unique_id=750171148]
+stream = ExtResource("8_q1c6s")
+
+[node name="jumscare" type="AudioStreamPlayer2D" parent="." unique_id=544487766]
+stream = ExtResource("9_ppd4q")
+volume_db = 16.795
+
+[node name="static" type="AudioStreamPlayer2D" parent="." unique_id=1189802749]
+stream = ExtResource("10_6p01f")
+
+[node name="impact" type="AudioStreamPlayer2D" parent="." unique_id=5656269]
+stream = ExtResource("11_jlymr")
+volume_db = 16.149

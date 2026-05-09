@@ -1,6 +1,79 @@
-[gd_scene format=3 uid="uid://bddsbep5cngnd"]
+[gd_scene format=3 uid="uid://cutsxs7sbisvs"]
 
 [ext_resource type="Script" uid="uid://bnt5373q5aauk" path="res://scripts/ui/start_menu.gd" id="1_irhji"]
+[ext_resource type="Texture2D" uid="uid://co8tp7l4ipaet" path="res://assets/sprites/intro/title1.png" id="2_tbbht"]
+[ext_resource type="Texture2D" uid="uid://viqdk1g8kkd0" path="res://assets/sprites/intro/title2.png" id="3_c71uh"]
+[ext_resource type="Texture2D" uid="uid://cqo75trms56v3" path="res://assets/sprites/intro/title3.png" id="4_68vbo"]
+[ext_resource type="Texture2D" uid="uid://1ei0dyp1vfoe" path="res://assets/sprites/intro/title4.png" id="5_o4f7m"]
+[ext_resource type="FontFile" uid="uid://del47kweg181p" path="res://fonts/Minecraft.ttf" id="6_lhkrp"]
+[ext_resource type="Texture2D" uid="uid://b3cvb3uis1sm" path="res://assets/sprites/intro/starFilp1.png" id="7_5wrxu"]
+[ext_resource type="Texture2D" uid="uid://cy0ayva7ibscm" path="res://assets/sprites/intro/starFlip2.png" id="8_fwg3k"]
+[ext_resource type="Texture2D" uid="uid://lk1xv7cqe1b2" path="res://assets/sprites/intro/star1.png" id="9_265iy"]
+[ext_resource type="Texture2D" uid="uid://2iobyc35s5f" path="res://assets/sprites/intro/star2.png" id="10_3gfby"]
+[ext_resource type="Texture2D" uid="uid://bfvya3kpeiurl" path="res://assets/sprites/bunny/bunTitle1.png" id="11_s8lol"]
+[ext_resource type="Texture2D" uid="uid://d28iwlll6hung" path="res://assets/sprites/bunny/bunTitle2.png" id="12_jfidj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdin7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tbbht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c71uh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_68vbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o4f7m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3aabf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5wrxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fwg3k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfukq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_265iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3gfby")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5iglk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_s8lol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jfidj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="StartMenu" type="Control" unique_id=43695856]
 layout_mode = 3
@@ -9,19 +82,49 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_irhji")
 
-[node name="Background" type="TextureRect" parent="." unique_id=2066196721]
+[node name="Background" type="ColorRect" parent="." unique_id=1429498622]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 5.0
+offset_right = 1922.0
+offset_bottom = 1083.0
+color = Color(0.3472, 0.56, 0.48906666, 1)
 
-[node name="Title" type="TextureRect" parent="." unique_id=884637673]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Title" type="AnimatedSprite2D" parent="." unique_id=1066457123]
+position = Vector2(1207, 528)
+scale = Vector2(1.2952381, 1.315)
+sprite_frames = SubResource("SpriteFrames_sdin7")
+autoplay = "default"
 
 [node name="StartButton" type="Button" parent="." unique_id=2097578507]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "start
+offset_left = 1011.0
+offset_top = 874.0
+offset_right = 1398.0
+offset_bottom = 943.0
+theme_override_fonts/font = ExtResource("6_lhkrp")
+theme_override_font_sizes/font_size = 40
+text = "START
 "
+
+[node name="star1" type="AnimatedSprite2D" parent="." unique_id=284589225]
+position = Vector2(711.00006, 297)
+scale = Vector2(0.424, 0.422)
+sprite_frames = SubResource("SpriteFrames_3aabf")
+autoplay = "default"
+
+[node name="star2" type="AnimatedSprite2D" parent="." unique_id=312387234]
+position = Vector2(1618.0001, 383)
+scale = Vector2(0.424, 0.422)
+sprite_frames = SubResource("SpriteFrames_xfukq")
+autoplay = "default"
+
+[node name="star3" type="AnimatedSprite2D" parent="." unique_id=1466584566]
+position = Vector2(1500.0001, 259.76053)
+scale = Vector2(0.179776, 0.17904215)
+sprite_frames = SubResource("SpriteFrames_xfukq")
+autoplay = "default"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=796664303]
+position = Vector2(444, 560)
+scale = Vector2(1.246, 1.26)
+sprite_frames = SubResource("SpriteFrames_5iglk")

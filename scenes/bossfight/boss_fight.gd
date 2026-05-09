@@ -13,6 +13,7 @@ var canAnswer = false
 var timer: SceneTreeTimer = null
 
 func _ready() -> void:
+	$backmusic.play()
 	var my_font = load("res://fonts/Minecraft.ttf")
 	var style = LabelSettings.new()
 	style.font = my_font
@@ -27,7 +28,7 @@ func _ready() -> void:
 	var q1 = LabelSettings.new()
 	q1.font = my_font
 	q1.font_size = 100
-	q1.font_color = Color.ROYAL_BLUE
+	q1.font_color = Color.RED
 	
 	var q2 = LabelSettings.new()
 	q2.font = my_font
@@ -113,8 +114,8 @@ func _show_question(q: int) -> void:
 		$q1.show()
 		$blue.show()
 		$red.show()
-		$blue.pressed.connect(_on_right_pressed.bind(true))
-		$red.pressed.connect(_on_left_pressed.bind(false))
+		$blue.pressed.connect(_on_right_pressed.bind(false))
+		$red.pressed.connect(_on_left_pressed.bind(true))
 	elif q == 2:
 		$q2.show()
 		$pink.show()
@@ -213,6 +214,7 @@ func _process(_delta: float) -> void:
 
 func _on_reached_button() -> void:
 	if correct == "true":
+		$laser.play()
 		if $bunbun.global_position.x < centerPos.x:
 			$beamleft.show()
 			$beamleft.play("default")
@@ -221,6 +223,7 @@ func _on_reached_button() -> void:
 			$beamright.play("default")
 	
 	await get_tree().create_timer(1.5).timeout
+	$laser.stop()
 	$beamleft.hide()
 	$beamright.hide()
 	

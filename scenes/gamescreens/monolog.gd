@@ -57,7 +57,7 @@ func _ready() -> void:
 	tween.tween_property(flash, "modulate:a", 1.0, 0.2)
 	tween.tween_property(flash, "modulate:a", 0.0, 0.4)
 	await tween.finished
-	
+	$jumscare.play()
 	$comeai1.show()
 	await get_tree().create_timer(0.3).timeout
 	$comeai1.hide()
@@ -74,15 +74,18 @@ func _ready() -> void:
 	
 	$Dark.size = screen
 	$Dark.position = Vector2.ZERO
+	await get_tree().create_timer(4.3).timeout
 	var darktween = create_tween()
+	$ai05.play()
 	darktween.tween_property(dark, "modulate:a", 1.0, 1)
 	darktween.tween_property(dark, "modulate:a", 0.0, 2)
 	await darktween.finished
-
+	
+	await get_tree().create_timer(1.0).timeout
 	$t1.show()
 	$t1.text = ""
 	await type_text($t1, "Why do you need me?")
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1.5).timeout
 	$t1.hide()
 	
 	await get_tree().create_timer(0.2).timeout
@@ -119,28 +122,30 @@ func _ready() -> void:
 	$ScrollContainer.show()
 	$ScrollContainer/Label.show()
 	staticScroll = true
+	$static.play()
 	
-	# Wait two frames so max_value calculates correctly
 	await get_tree().process_frame
 	await get_tree().process_frame
 	
-	# Wait until scroll finishes with 10 second safety timeout
 	var elapsed = 0.0
 	while staticScroll:
 		await get_tree().process_frame
 		elapsed += get_process_delta_time()
 		if elapsed >= 1.3:
 			staticScroll = false
+			$static.stop()
 			break
 	
 	$ScrollContainer.hide()
 	$ScrollContainer/Label.hide()
 	
 	await get_tree().create_timer(0.7).timeout
+	$impact.play()
 	$useroutline.show()
 	$userbox.show()
 	await get_tree().create_timer(1.2).timeout
 	
+	$static.play()
 	$userbox.color = Color.BLUE
 	await get_tree().create_timer(0.1).timeout
 	$userbox.color = Color.RED
@@ -149,6 +154,7 @@ func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 	$userbox.color = Color.BLUE
 	await get_tree().create_timer(0.1).timeout
+	$static.stop()
 	$userbox.color = Color.BLACK
 	await get_tree().create_timer(0.6).timeout
 	
@@ -182,10 +188,10 @@ func _ready() -> void:
 	$user.hide()
 	
 	await get_tree().create_timer(0.7).timeout
-	
+	$impact.play()
 	$t1.text = "HUMANITY IS SO PITIFUL"
 	$t1.show()
-	get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.7).timeout
 	
 	$t2.show()
 	$t2.text = ""
@@ -215,13 +221,46 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	
 	get_tree().change_scene_to_file("res://scenes/bossfight/boss_fight.tscn")
-	
-	
-	
+
+# WAV based blip
+func play_blip(hz: float = 0.0) -> void:
+	var player = AudioStreamPlayer.new()
+	add_child(player)
+
+	if hz == 0.0:
+		hz = randf_range(300.0, 900.0)
+
+	var sample_rate = 44100
+	var duration = 0.06
+	var num_samples = int(sample_rate * duration)
+
+	var audio = AudioStreamWAV.new()
+	audio.format = AudioStreamWAV.FORMAT_16_BITS
+	audio.stereo = false
+	audio.mix_rate = sample_rate
+
+	var data = PackedByteArray()
+	for i in range(num_samples):
+		var phase = float(i) / sample_rate
+		var envelope = 1.0 - (float(i) / num_samples)  # fade out to avoid pop
+		var sample = sin(phase * TAU * hz) * 0.8 * envelope
+		var value = int(sample * 32767)
+		data.append(value & 0xFF)
+		data.append((value >> 8) & 0xFF)
+
+	audio.data = data
+	player.stream = audio
+	player.volume_db = 6
+	player.play()
+
+	await get_tree().create_timer(duration + 0.05).timeout
+	player.queue_free()
 
 func type_text(label: Label, text: String, speed: float = 0.05) -> void:
 	label.text = ""
 	for character in text:
+		if character != " ":
+			play_blip()  # beep each character except spaces
 		label.text += character + "▮"
 		await get_tree().create_timer(speed).timeout
 		label.text = label.text.left(label.text.length() - 1)
@@ -233,11 +272,9 @@ func _process(delta: float) -> void:
 		
 		var scrollbar = $ScrollContainer.get_v_scroll_bar()
 		
-		# if content isnt bigger than container just skip
 		if scrollbar.max_value <= 0:
 			staticScroll = false
 			return
 		
-		# buffer of 10 pixels so it doesnt get stuck
 		if $ScrollContainer.scroll_vertical >= scrollbar.max_value - 300:
 			staticScroll = false
