@@ -1,24 +1,50 @@
 [gd_scene format=3 uid="uid://bgk03nxgiby5q"]
 
+[ext_resource type="Script" uid="uid://bfpy3sk2pwd04" path="res://scenes/ui/warning_screen.gd" id="1_wkdgj"]
+[ext_resource type="Texture2D" uid="uid://q5iuct76ccna" path="res://assets/sprites/bunny/monkeyLion.png" id="2_36fd1"]
+[ext_resource type="Texture2D" uid="uid://c4g73d8amycl7" path="res://assets/sprites/eyenstyne/aiAngry2.png" id="3_yf5ff"]
+[ext_resource type="Texture2D" uid="uid://bdho3yycm8o3t" path="res://assets/sprites/eyenstyne/aiAngry1.png" id="4_8kxu4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pwib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yf5ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8kxu4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="WarningScreen" type="CanvasLayer" unique_id=35555179]
+script = ExtResource("1_wkdgj")
 
 [node name="DimOverlay" type="ColorRect" parent="." unique_id=195064834]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 2226.0
+offset_bottom = 1496.0
+color = Color(0.2901961, 0.078431375, 0.05882353, 0.41568628)
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1049582707]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1347495818]
+position = Vector2(438, 692)
+scale = Vector2(1.7509998, 1.5590001)
+texture = ExtResource("2_36fd1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1571666543]
-layout_mode = 2
+[node name="Angry" type="AnimatedSprite2D" parent="." unique_id=1033274876]
+position = Vector2(1293.0001, 355)
+scale = Vector2(2.941, 3.134)
+sprite_frames = SubResource("SpriteFrames_0pwib")
+frame_progress = 0.29149762
+flip_h = true
 
-[node name="EyensteinSprite" type="Sprite2D" parent="PanelContainer/VBoxContainer" unique_id=1718233182]
-
-[node name="WarningLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=853696383]
-layout_mode = 2
-
-[node name="ContinueButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1588603502]
-layout_mode = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=866324037]
+[node name="Label" type="Label" parent="." unique_id=880413393]
+offset_left = 596.0
+offset_top = 856.0
+offset_right = 1988.0
+offset_bottom = 1203.0
+theme_override_font_sizes/font_size = 58
+text = "ARE YOU DUMB? 
+PROMPT ME BETTER!!"
+horizontal_alignment = 1

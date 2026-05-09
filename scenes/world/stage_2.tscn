@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dy24qj2bch52p" path="res://assets/sprites/food/carrot.png" id="9_2gdo7"]
 [ext_resource type="Texture2D" uid="uid://bdpx1hjjo3tlt" path="res://assets/sprites/food/carrotLock.png" id="10_0bk63"]
 [ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="11_430uc"]
-[ext_resource type="Texture2D" uid="uid://bsty3df7tytfq" path="res://assets/sprites/life1.png" id="12_c8ds4"]
+[ext_resource type="Texture2D" uid="uid://bxlxticcv5xnm" path="res://assets/sprites/life3.png" id="12_q1ps1"]
 [ext_resource type="PackedScene" uid="uid://b0eyn3rmwojae" path="res://AI/EyensteinHelper.tscn" id="13_7cyy7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_njrbh"]
@@ -175,7 +175,7 @@ justification_flags = 161
 [node name="Healthbar" type="Sprite2D" parent="HUD" unique_id=1944924571]
 position = Vector2(409.5, 1018.5)
 scale = Vector2(0.7762097, 0.6826924)
-texture = ExtResource("12_c8ds4")
+texture = ExtResource("12_q1ps1")
 
 [node name="EyensteinHelper" parent="." unique_id=2100538655 instance=ExtResource("13_7cyy7")]
 position = Vector2(473, -169)
