@@ -236,5 +236,4 @@ func _on_reached_button() -> void:
 	moveCenter = true
 
 func _game_over() -> void:
-	pass
-	# add your scene change here!
+	get_tree().change_scene_to_file("res://scenes/endcredits/end_credits.tscn")
