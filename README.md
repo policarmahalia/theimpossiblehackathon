@@ -23,6 +23,8 @@ or face the consequences.
 ## Assets & Attribution
 - Art & sprites — original, hand drawn by the team
 - Music — Downloaded from Uppbeat.io
+  - Easy Livin' by Cutesy Chamber Ensemble
+  - Fuzzball Parade by Kevin MacLeod
 - Sound effects — Downloaded from YouTube, TikTok, Pixabay
 - Font — Press Start 2P by CodeMan38
 
