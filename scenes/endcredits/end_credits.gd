@@ -11,6 +11,7 @@ func _ready() -> void:
 	#await get_tree().process_frame
 	#await get_tree().process_frame
 	#pass # Replace with function body.
+	$AudioStreamPlayer.play()
 	await get_tree().process_frame
 	await get_tree().process_frame
 	$ScrollContainer.scroll_vertical = 0
