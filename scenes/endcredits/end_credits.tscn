@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://bhrqk5pt3840o"]
+
+[ext_resource type="Script" uid="uid://dbxg5qget8fi3" path="res://scenes/endcredits/end_credits.gd" id="1_er207"]
+[ext_resource type="AudioStream" uid="uid://ky22ndxlitw0" path="res://audio/music/end_credits.mp3" id="2_p88q0"]
+[ext_resource type="Texture2D" uid="uid://bnqwg5x2naaxa" path="res://assets/backgrounds/endbg.png" id="3_2gj6v"]
+[ext_resource type="Texture2D" uid="uid://ct0xue5xhg4ul" path="res://assets/sprites/memes/IMG_6418.jpg" id="3_cbd0l"]
+[ext_resource type="Texture2D" uid="uid://bfxjir43iqqnd" path="res://assets/sprites/memes/B6F640E6-91DB-4CAE-BE90-F954A86D3057.JPG" id="4_2u01p"]
+[ext_resource type="Texture2D" uid="uid://ti2xwfgwlcms" path="res://assets/sprites/memes/images.jpeg" id="5_qds1q"]
+[ext_resource type="Texture2D" uid="uid://egrmrlbgd3ao" path="res://assets/sprites/memes/IMG_5548.jpg" id="6_gdfer"]
+[ext_resource type="Texture2D" uid="uid://b3nmkc7dj5a0b" path="res://assets/sprites/Screenshot 2026-05-10 at 10.31.49 am.png" id="7_2gj6v"]
+[ext_resource type="Texture2D" uid="uid://bncegfdr73o5o" path="res://assets/sprites/memes/IMG_6806.jpg" id="8_dujey"]
+
+[node name="EndCredits" type="Node2D" unique_id=1107728211]
+script = ExtResource("1_er207")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=388302077]
+stream = ExtResource("2_p88q0")
+
+[node name="TextureRect" type="ColorRect" parent="." unique_id=105032449]
+offset_right = 1930.0
+offset_bottom = 1090.0
+color = Color(0.15101549, 0.6152292, 0.73988616, 1)
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=817932081]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -9.0
+offset_right = 1931.0
+offset_bottom = 1096.0
+texture = ExtResource("3_2gj6v")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=325681005]
+offset_left = 177.0
+offset_top = -5.0
+offset_right = 1943.0
+offset_bottom = 1232.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1022767936]
+layout_mode = 2
+
+[node name="title+intro" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=698905435]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BUN BUN THE DUM DUM
+
+
+
+a game made in 34 hours
+
+
+made by...
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cat" type="TextureRect" parent="ScrollContainer/VBoxContainer" unique_id=1276996042]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_cbd0l")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="names" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1925178629]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+reyana, mahalia, maria & nayla :)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="kawaii" type="TextureRect" parent="ScrollContainer/VBoxContainer" unique_id=1047590141]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_2u01p")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="what used" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=2039212528]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+WHAT WE USED 
+
+Godot Engine 4.6
+
+GDScript
+
+tears
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="patrick" type="TextureRect" parent="ScrollContainer/VBoxContainer" unique_id=59178852]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_qds1q")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="assets" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1247854223]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+ASSETS
+
+all art and sprites handrawn by maria!!
+
+font - minecraft font from Google
+
+music - some random royalty free website
+
+sfx - sourced from YouTube
+
+memes - ...
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="patrick2" type="TextureRect" parent="ScrollContainer/VBoxContainer" unique_id=64287643]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_gdfer")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="specthanks" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=882096917]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "SPECIAL THANKS TO
+
+caffeine 
+
+
+everyone who told us to sleep 
+(we didn't.. rip reyana n mahalia)
+
+
+uqlit not cs
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="avoidhim" type="TextureRect" parent="ScrollContainer/VBoxContainer" unique_id=1177979167]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_2gj6v")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="tyyy" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=2071342114]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "thank you so much for playing! we hope you had fun :) 
+
+workhardplayhard
+
+gamjam 2026
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IJUSTMADESOMEBULLSHIITITTTT" type="TextureRect" parent="ScrollContainer/VBoxContainer" unique_id=487287888]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_dujey")
+expand_mode = 1
+stretch_mode = 4

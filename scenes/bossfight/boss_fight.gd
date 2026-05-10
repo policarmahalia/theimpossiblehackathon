@@ -236,5 +236,5 @@ func _on_reached_button() -> void:
 	moveCenter = true
 
 func _game_over() -> void:
-	print("All questions done!")
+	pass
 	# add your scene change here!

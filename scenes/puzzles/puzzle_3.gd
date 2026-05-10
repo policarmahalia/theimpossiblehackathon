@@ -89,6 +89,7 @@ func _lose_life():
 func _on_correct():
 	current_question += 1
 	if current_question >= questions.size():
+		GameManager.stop_music()
 		emit_signal("puzzle_completed")
 		visible = false
 	else:

@@ -101,7 +101,7 @@ func _on_final_loss():
 	eyestein.play("angry3")
 	var vine = AudioStreamPlayer.new()
 	vine.stream = load("res://audio/sfx/augh.mp3")
-	get_tree().change_scene_to_file("res://scenes/gamescreens/monolog.tscn")
+	#get_tree().change_scene_to_file("res://scenes/gamescreens/monolog.tscn")
 	add_child(vine)
 	vine.play()
 	_flash_meme()
