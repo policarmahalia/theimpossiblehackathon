@@ -25,6 +25,9 @@ func _ready():
 	chain.visible = true
 	puzzle_overlay.visible = false
 	puzzle_overlay.puzzle_completed.connect(_on_puzzle_completed)
+	
+	eyenstein_helper.chat_opened.connect(_on_chat_opened)
+	eyenstein_helper.chat_closed.connect(_on_chat_closed)
 
 	var screen = get_viewport().size
 	var tween = create_tween()
@@ -33,7 +36,7 @@ func _ready():
 
 
 func _input(event):
-	if puzzle_open:
+	if puzzle_open or eyenstein_helper.chat_panel.visible:
 		return
 
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -93,3 +96,11 @@ func _on_puzzle_completed():
 	puzzle_overlay.visible = false
 	celery_unlocked = true
 	chain.visible = false
+
+func _on_chat_opened():
+	puzzle_overlay.visible = false
+
+
+func _on_chat_closed():
+	if puzzle_open:
+		puzzle_overlay.visible = true
