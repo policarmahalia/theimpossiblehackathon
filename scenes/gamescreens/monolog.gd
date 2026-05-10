@@ -6,6 +6,7 @@ extends Node2D
 var staticScroll = false
 
 func _ready() -> void:
+	GameManager.stop_music()
 	var my_font = load("res://fonts/Minecraft.ttf")
 	var style = LabelSettings.new()
 	style.font = my_font

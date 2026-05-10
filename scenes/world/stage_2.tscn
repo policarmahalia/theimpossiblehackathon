@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dia0371clj741" path="res://assets/sprites/food/berryLock.png" id="10_0f4t3"]
 [ext_resource type="Texture2D" uid="uid://dbor7id2vukoe" path="res://assets/sprites/bunny/bunIdle.png" id="11_430uc"]
 [ext_resource type="PackedScene" uid="uid://fsvm6ht302ji" path="res://scenes/puzzles/puzzle_2.tscn" id="11_n4puk"]
-[ext_resource type="Texture2D" uid="uid://b0n6iybmlsex3" path="res://assets/sprites/life2.png" id="12_0f4t3"]
+[ext_resource type="Texture2D" uid="uid://cormyxovsw52e" path="res://assets/sprites/life2.png" id="12_0f4t3"]
 [ext_resource type="PackedScene" uid="uid://b0eyn3rmwojae" path="res://AI/EyensteinHelper.tscn" id="13_7cyy7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibpa5"]
