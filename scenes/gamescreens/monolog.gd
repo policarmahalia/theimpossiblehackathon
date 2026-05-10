@@ -73,13 +73,16 @@ func _ready() -> void:
 	$bunbun.hide()
 	$Dark.show()
 	
+	
 	$Dark.size = screen
 	$Dark.position = Vector2.ZERO
 	await get_tree().create_timer(4.3).timeout
+	
+	
 	var darktween = create_tween()
-	$ai05.play()
 	darktween.tween_property(dark, "modulate:a", 1.0, 1)
 	darktween.tween_property(dark, "modulate:a", 0.0, 2)
+	$ai05.play()
 	await darktween.finished
 	
 	await get_tree().create_timer(1.0).timeout

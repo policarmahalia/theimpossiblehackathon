@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dlsdnbs410aii"]
+[gd_scene format=3 uid="uid://fiundgrbii6"]
 
 [ext_resource type="Script" uid="uid://cgq4bfcuxm6yg" path="res://scenes/gamescreens/monolog.gd" id="1_s1pcg"]
 [ext_resource type="Texture2D" uid="uid://dctt2u02f2xr4" path="res://assets/backgrounds/05shotOfEyeBackground.png" id="2_q1c6s"]
@@ -242,6 +242,7 @@ text = "test"
 
 [node name="ai05" type="AudioStreamPlayer2D" parent="." unique_id=750171148]
 stream = ExtResource("8_q1c6s")
+volume_db = 10.0
 
 [node name="jumscare" type="AudioStreamPlayer2D" parent="." unique_id=544487766]
 stream = ExtResource("9_ppd4q")

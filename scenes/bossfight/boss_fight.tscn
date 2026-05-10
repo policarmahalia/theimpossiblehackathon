@@ -253,3 +253,8 @@ volume_db = -5.814
 
 [node name="laser" type="AudioStreamPlayer2D" parent="." unique_id=2054891108]
 stream = ExtResource("24_mwk0b")
+
+[node name="Dark" type="ColorRect" parent="." unique_id=2059315220]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)

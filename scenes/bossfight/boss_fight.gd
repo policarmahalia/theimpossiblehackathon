@@ -13,6 +13,7 @@ var canAnswer = false
 var timer: SceneTreeTimer = null
 
 func _ready() -> void:
+	$Dark.hide()
 	$backmusic.play()
 	var my_font = load("res://fonts/Minecraft.ttf")
 	var style = LabelSettings.new()
@@ -236,4 +237,9 @@ func _on_reached_button() -> void:
 	moveCenter = true
 
 func _game_over() -> void:
+	var screen = get_viewport_rect().size
+	$Dark.size = screen
+	$Dark.position = Vector2.ZERO
+	$Dark.show()
+	await get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file("res://scenes/endcredits/end_credits.tscn")
