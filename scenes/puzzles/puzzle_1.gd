@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-
 signal puzzle_completed
 
 var lives = 4
 var anger_animations = ["default", "angry1", "angry2", "angry3"]
+var chat_open: bool = false
 
 var questions = [
 	{
@@ -32,9 +32,11 @@ var current_question = 0
 
 @onready var eyestein = $Eyenstein
 @onready var buzzer = $Buzzer
-@onready var flash_timer = $FlashTimer
 @onready var meme_flash = $MemeFlash
 @onready var countdown_timer = $CountdownTimer
+@onready var puzzle_panel = $PuzzlePannel
+
+var eyenstein_helper = null
 
 
 func _ready():
@@ -47,6 +49,43 @@ func _ready():
 	meme_flash.visible = false
 	load_question()
 
+	# get eyenstein helper from parent stage
+	eyenstein_helper = get_parent().get_node_or_null("EyensteinHelper")
+	if eyenstein_helper:
+		eyenstein_helper.chat_opened.connect(_on_chat_opened)
+		eyenstein_helper.chat_closed.connect(_on_chat_closed)
+
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# check if eyenstein sprite was clicked
+		var mouse = get_viewport().get_mouse_position()
+		if mouse.distance_to(eyestein.position) < 80 and not chat_open:
+			if eyenstein_helper:
+				eyenstein_helper._open_chat()
+
+
+func _on_chat_opened():
+	chat_open = true
+	puzzle_panel.visible = false
+	$AnswerA.visible = false
+	$AnswerB.visible = false
+	$AnswerC.visible = false
+	$AnswerD.visible = false
+	$QuestionLabel.visible = false
+	countdown_timer.stop()
+
+
+func _on_chat_closed():
+	chat_open = false
+	puzzle_panel.visible = true
+	$AnswerA.visible = true
+	$AnswerB.visible = true
+	$AnswerC.visible = true
+	$AnswerD.visible = true
+	$QuestionLabel.visible = true
+	countdown_timer.start()
+
 
 func load_question():
 	var q = questions[current_question]
@@ -58,6 +97,8 @@ func load_question():
 
 
 func _on_answer(index: int):
+	if chat_open:
+		return
 	var q = questions[current_question]
 	if index == q["correct"]:
 		_on_correct()
@@ -66,7 +107,8 @@ func _on_answer(index: int):
 
 
 func _on_time_up():
-	_lose_life()
+	if not chat_open:
+		_lose_life()
 
 
 func _lose_life():
@@ -80,7 +122,6 @@ func _lose_life():
 	eyestein.play(anger_animations[4 - lives])
 	countdown_timer.start()
 
-	# show warning screen after 2 fails
 	if lives == 2:
 		var warning = preload("res://scenes/ui/warning_screen.tscn").instantiate()
 		get_parent().add_child(warning)
@@ -94,14 +135,13 @@ func _on_correct():
 	else:
 		load_question()
 
+
 func _on_final_loss():
 	_disable_buttons()
-	GameManager.stop_music()
 	countdown_timer.stop()
 	eyestein.play("angry3")
 	var vine = AudioStreamPlayer.new()
 	vine.stream = load("res://audio/sfx/vine_boom.mp3")
-	get_tree().change_scene_to_file("res://scenes/gamescreens/monolog.tscn")
 	add_child(vine)
 	vine.play()
 	_flash_meme()

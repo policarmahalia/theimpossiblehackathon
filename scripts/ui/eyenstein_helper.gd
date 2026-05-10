@@ -1,6 +1,8 @@
 # eyenstein_helper.gd
 extends Node2D
 
+signal chat_opened
+signal chat_closed
 # --- API SETUP ---
 var API_KEY: String = ""
 var API_URL: String = "https://api.groq.com/openai/v1/chat/completions"
@@ -33,6 +35,8 @@ func _ready():
 	close_button.pressed.connect(_on_close_pressed)
 	http_request.request_completed.connect(_on_request_completed)
 	input_field.text_submitted.connect(_on_input_submitted)
+	
+
 
 func _load_api_key() -> String:
 	var config = ConfigFile.new()
@@ -52,12 +56,14 @@ func _open_chat():
 	input_field.grab_focus()
 	response_label.clear()
 	response_label.add_text("what can i do for you?")
+	emit_signal("chat_opened")
 
 func _on_close_pressed():
 	chat_panel.visible = false
 	notif_bubble.visible = true
 	input_field.text = ""
 	response_label.clear()
+	emit_signal("chat_closed")
 
 func _on_input_submitted(text):
 	_send_to_groq(text)

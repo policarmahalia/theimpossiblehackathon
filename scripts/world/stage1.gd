@@ -26,6 +26,8 @@ func _ready():
 	carrot.visible = true
 	chain.visible = true
 	puzzle_overlay.visible = false
+	eyenstein_helper.chat_opened.connect(_on_chat_opened)
+	eyenstein_helper.chat_closed.connect(_on_chat_closed)
 
 	# listen for puzzle completed signal
 	puzzle_overlay.puzzle_completed.connect(_on_puzzle_completed)
@@ -42,7 +44,7 @@ func _ready():
 
 
 func _input(event):
-	if puzzle_open:
+	if puzzle_open or eyenstein_helper.chat_panel.visible:
 		return
 
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -108,3 +110,14 @@ func _on_puzzle_completed():
 	chain.visible = false
 	notif.text = "click the carrot!"
 	notif.visible = true
+
+
+func _on_chat_opened():
+	# hide puzzle when chat opens
+	puzzle_overlay.visible = false
+
+
+func _on_chat_closed():
+	# only show puzzle again if it's supposed to be open
+	if puzzle_open:
+		puzzle_overlay.visible = true
