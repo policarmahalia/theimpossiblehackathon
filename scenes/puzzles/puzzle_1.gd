@@ -1,10 +1,11 @@
 extends CanvasLayer
 
-
 signal puzzle_completed
 
 var lives = 4
 var anger_animations = ["default", "angry1", "angry2", "angry3"]
+var chat_open: bool = false
+var eyenstein_helper = null
 
 var questions = [
 	{
@@ -28,11 +29,11 @@ var questions = [
 		"correct": 3
 	},
 ]
+
 var current_question = 0
 
 @onready var eyestein = $Eyenstein
 @onready var buzzer = $Buzzer
-@onready var flash_timer = $FlashTimer
 @onready var meme_flash = $MemeFlash
 @onready var countdown_timer = $CountdownTimer
 
@@ -42,11 +43,54 @@ func _ready():
 	$AnswerB.pressed.connect(_on_answer.bind(1))
 	$AnswerC.pressed.connect(_on_answer.bind(2))
 	$AnswerD.pressed.connect(_on_answer.bind(3))
+
 	countdown_timer.timeout.connect(_on_time_up)
+
 	eyestein.play("default")
 	meme_flash.visible = false
-	load_question()
 
+	load_question()
+	eyenstein_helper = get_parent().get_node_or_null("EyensteinHelper")
+	if eyenstein_helper:
+		eyenstein_helper.chat_opened.connect(_on_chat_opened)
+		eyenstein_helper.chat_closed.connect(_on_chat_closed)
+
+
+# ========================
+# CHAT HANDLING
+# ========================
+
+func _on_chat_opened():
+	chat_open = true
+	visible = false
+	countdown_timer.stop()
+
+
+func _on_chat_closed():
+	chat_open = false
+	visible = true
+	countdown_timer.start()
+
+
+# ========================
+# INPUT (CLICK EYENSTEIN)
+# ========================
+
+func _input(event):
+	if chat_open:
+		return
+
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var mouse = get_viewport().get_mouse_position()
+
+		if mouse.distance_to(eyestein.position) < 80:
+			if eyenstein_helper:
+				eyenstein_helper._open_chat()
+
+
+# ========================
+# PUZZLE LOGIC
+# ========================
 
 func load_question():
 	var q = questions[current_question]
@@ -58,7 +102,11 @@ func load_question():
 
 
 func _on_answer(index: int):
+	if chat_open:
+		return
+
 	var q = questions[current_question]
+
 	if index == q["correct"]:
 		_on_correct()
 	else:
@@ -66,7 +114,8 @@ func _on_answer(index: int):
 
 
 func _on_time_up():
-	_lose_life()
+	if not chat_open:
+		_lose_life()
 
 
 func _lose_life():
@@ -80,7 +129,6 @@ func _lose_life():
 	eyestein.play(anger_animations[4 - lives])
 	countdown_timer.start()
 
-	# show warning screen after 2 fails
 	if lives == 2:
 		var warning = preload("res://scenes/ui/warning_screen.tscn").instantiate()
 		get_parent().add_child(warning)
@@ -88,27 +136,35 @@ func _lose_life():
 
 func _on_correct():
 	current_question += 1
+
 	if current_question >= questions.size():
 		emit_signal("puzzle_completed")
 		visible = false
 	else:
 		load_question()
 
+
+# ========================
+# LOSS / EFFECTS
+# ========================
+
 func _on_final_loss():
 	_disable_buttons()
-	GameManager.stop_music()
 	countdown_timer.stop()
+	GameManager.stop_music()
 	eyestein.play("angry3")
+
 	var vine = AudioStreamPlayer.new()
 	vine.stream = load("res://audio/sfx/vine_boom.mp3")
-	#get_tree().change_scene_to_file("res://scenes/gamescreens/monolog.tscn")
 	add_child(vine)
 	vine.play()
+
 	_flash_meme()
 
 
 func _flash_meme():
 	meme_flash.visible = true
+
 	var tween = create_tween()
 	tween.tween_property(meme_flash, "modulate:a", 0.4, 0.1)
 	tween.tween_interval(0.4)
