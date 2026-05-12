@@ -1,6 +1,6 @@
 # Bun Bun the Dum Dum
 
-A point-and-click puzzle game made for [Hackathon Name] 2026.
+A point-and-click puzzle game made for GameJam 2026.
 
 ## Team
 - Nahin Reyana Khan — @nreyana
